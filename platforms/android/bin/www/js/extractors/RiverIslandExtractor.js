@@ -1,0 +1,3 @@
+var RiverIslandExtractor = function(pageSource) {
+
+}
