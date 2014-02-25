@@ -1,4 +1,4 @@
-var EmployeeView = function(adapter, template, employee) {
+var ProductView = function(adapter, productPage, product) {
  
     this.initialize = function() {
         this.el = $('<div/>');
@@ -6,7 +6,7 @@ var EmployeeView = function(adapter, template, employee) {
     };
     
     this.render = function() {
-	    this.el.html(template(employee));
+	    this.el.html(productPage(product));
 	    return this;
 	};
  

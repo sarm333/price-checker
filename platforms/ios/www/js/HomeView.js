@@ -1,4 +1,4 @@
-var HomeView = function (adapter, template, listItemTemplate) {
+var HomeView = function (adapter, homePage, listItem) {
 	
 	this.initialize = function () {
 	    // Define a div wrapper for the view. The div wrapper is used to attach events.
@@ -9,13 +9,13 @@ var HomeView = function (adapter, template, listItemTemplate) {
 	};
 
 	this.render = function() {
-		this.el.html(template());
+		this.el.html(homePage());
     	return this;
 	};
 	
 	this.findByName = function() {
-    	adapter.findByName($('.search-key').val()).done(function (employees) {
-            $('.employee-list').html(listItemTemplate(employees));
+    	adapter.findByName($('.search-key').val()).done(function (products) {
+            $('.product-list').html(listItem(products));
         });
     }
     

@@ -2,20 +2,14 @@
 (function () {
 
     /* ---------------------------------- Local Variables ---------------------------------- */
-    var homeTpl = Handlebars.compile($("#home-tpl").html());
-    var employeeLiTpl = Handlebars.compile($("#employee-li-tpl").html());
-    var employeeTpl = Handlebars.compile($("#employee-tpl").html());
+    var homePage = Handlebars.compile($("#home").html());
+    var productList = Handlebars.compile($("#product-list").html());
+    var productPage = Handlebars.compile($("#product").html());
     var detailsURL = /^#employees\/(\d{1,})/;
+    var slider = new PageSlider($('body'));
     
     var adapter = new MemoryAdapter();
-//    var adapter = new JSONPAdapter();
-//  var adapter = new LocalStorageAdapter();
-//  var adapter = new WebSqlAdapter();
     
-//    adapter.initialize().done(function () {
-//        console.log("Data adapter initialized");
-//    });
-
 	adapter.initialize().done(function () {
 	    route();
 	});
@@ -44,16 +38,19 @@
 
     /* ---------------------------------- Local Functions ---------------------------------- */
 
+    /**
+     * Transitions from the HomeView to the ProductView
+     */
     function route() {
 	    var hash = window.location.hash;
 	    if (!hash) {
-	        $('body').html(new HomeView(adapter, homeTpl, employeeLiTpl).render().el);
+	    	slider.slidePage(new HomeView(adapter, homePage, productList).render().el);
 	        return;
 	    }
 	    var match = hash.match(detailsURL);
 	    if (match) {
-	        adapter.findById(Number(match[1])).done(function(employee) {
-	            $('body').html(new EmployeeView(adapter, employeeTpl, employee).render().el);
+	        adapter.findById(Number(match[1])).done(function(productListItem) {
+	        	slider.slidePage(new ProductView(adapter, productPage, productListItem).render().el);
 	        });
 	    }
 	}

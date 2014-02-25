@@ -5,7 +5,7 @@
     var homePage = Handlebars.compile($("#home").html());
     var productList = Handlebars.compile($("#product-list").html());
     var productPage = Handlebars.compile($("#product").html());
-    var detailsURL = /^#employees\/(\d{1,})/;
+    var detailsURL = /^#products\/(\d{1,})/;
     var slider = new PageSlider($('body'));
     
     var adapter = new MemoryAdapter();
