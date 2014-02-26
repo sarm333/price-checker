@@ -34,17 +34,20 @@
     }, false);
     
     $(window).on('hashchange', route);
+    $(document).on('ready', populateProductList);
+    $('.add-button').on('click', clickedAddBtn);
 
 
     /* ---------------------------------- Local Functions ---------------------------------- */
 
     /**
-     * Transitions from the HomeView to the ProductView
+     * Transitions from the HomeView to the ProductView or vice versa
      */
     function route() {
 	    var hash = window.location.hash;
 	    if (!hash) {
 	    	slider.slidePage(new HomeView(adapter, homePage, productList).render().el);
+	    	populateProductList();
 	        return;
 	    }
 	    var match = hash.match(detailsURL);
@@ -54,4 +57,16 @@
 	        });
 	    }
 	}
+    
+	function populateProductList() {
+		$('.product-list').html(productList(adapter.getProducts()));
+	}
+	
+	function clickedAddBtn() {
+		//TODO: handle crappy urls
+		var input = $('.url-input').val();
+		console.log(input);
+	}
+	
+	
 }());

@@ -9,34 +9,37 @@
 </head>
 <body>
 
-<script id="home" type="text/x-handlebars-template">
+<script id="home">
     <div class="topcoat-navigation-bar">
         <div class="topcoat-navigation-bar__item center full">
             <h1 class="topcoat-navigation-bar__title">Price Checker</h1>
         </div>
     </div>
-    <div class="search-bar">
-        <input type="search" placeholder="url" class="topcoat-search-input search-key">
+    <div class="top-bar">
+    	<input type="text" placeholder="url" class="topcoat-text-input url-input">
+        <div id="add-button">
+			<button class="topcoat-button" >Add</button>
+		</div>
     </div>
     <div class="topcoat-list__container scroller">
     	<ul class="topcoat-list list product-list"></ul>
 	</div>
 </script>
 
-<script id="product-list" type="text/x-handlebars-template">
+<script id="product-list">
     {{#.}}
     <li class="topcoat-list__item">
-        <a href="#employees/{{id}}">
-            <img src="assets/pics/{{pic}}">
-            <p>{{firstName}} {{lastName}}</p>
-            <p>{{title}}</p>
+        <a href="#products/{{id}}">
+        	<img src="{{imageUrl}}">
+	        <p class="quick-details">{{productName}}</p>
+	        <p class="quick-details">{{store}} : £{{price}}</p>
             <span class="chevron"></span><span class="count">{{reports}}</span>
         </a>
     </li>
     {{/.}}
 </script>
 
-<script id="product" type="text/x-handlebars-template">
+<script id="product">
     <div class="topcoat-navigation-bar">
         <div class="topcoat-navigation-bar__item left quarter">
             <a class="topcoat-icon-button--quiet back-button" href="#">
@@ -47,21 +50,19 @@
             <h1 class="topcoat-navigation-bar__title">Product</h1>
         </div>
     </div>
-    <div class='details'>
-        <img src="assets/pics/{{pic}}" class="employee-image">
-        <h1>{{firstName}} {{lastName}}</h1>
-        <h2>{{title}}</h2>
-        <h2>{{city}}</h2>
+    <div class="details">
+    	<img src="{{imageUrl}}" class="product-image">
+        <h1>{{productName}}</h1>
+        <h2>{{store}}</h2>
+        <h2>£{{price}}</h2>
         <div class="topcoat-list__container scroller">
             <ul class="topcoat-list list actions">
-				<li class="topcoat-list__item"><a href="#" class="add-location-btn"><p>Add Location</p></a></li>
-                {{#if managerId}}
-                <li class="topcoat-list__item"><a href="#employees/{{managerId}}"><p>View Manager</p><p>{{managerName}}</p><div class="action-icon icon-manager"/></a></li>
-                {{/if}}
-                <li class="topcoat-list__item"><a href="tel:{{officePhone}}"><p>Call Office</p><p>{{officePhone}}</p><div class="action-icon icon-call"/></a></li>
-                <li class="topcoat-list__item"><a href="tel:{{cellPhone}}"><p>Call Cell</p><p>{{cellPhone}}</p><div class="action-icon icon-call"/></a></li>
-                <li class="topcoat-list__item"><a href="sms:{{cellPhone}}"><p>SMS</p><p>{{cellPhone}}</p><div class="action-icon icon-sms"/></a></li>
-                <li class="topcoat-list__item"><a href="mailto:{{email}}"><p>Email</p><p>{{email}}</p><div class="action-icon icon-mail"/></a></li>
+            	<div class="product-detail">
+            		<li class="topcoat-list__item"><a href="{{productUrl}}"><p>URL</p><p>{{productUrl}}</p></a></li>
+            	</div>
+            	<div class="product-detail">
+            	<li class="topcoat-list__item"><a href="{{description}}"><p>Product Description</p><p>{{description}}</p></a></li>
+            	</div>
             </ul>
         </div>
     </div>

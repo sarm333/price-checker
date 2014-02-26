@@ -5,7 +5,7 @@
     var homePage = Handlebars.compile($("#home").html());
     var productList = Handlebars.compile($("#product-list").html());
     var productPage = Handlebars.compile($("#product").html());
-    var detailsURL = /^#employees\/(\d{1,})/;
+    var detailsURL = /^#products\/(\d{1,})/;
     var slider = new PageSlider($('body'));
     
     var adapter = new MemoryAdapter();
@@ -34,17 +34,19 @@
     }, false);
     
     $(window).on('hashchange', route);
+    $(document).on('ready', populateProductList);
 
 
     /* ---------------------------------- Local Functions ---------------------------------- */
 
     /**
-     * Transitions from the HomeView to the ProductView
+     * Transitions from the HomeView to the ProductView or vice versa
      */
     function route() {
 	    var hash = window.location.hash;
 	    if (!hash) {
 	    	slider.slidePage(new HomeView(adapter, homePage, productList).render().el);
+	    	populateProductList();
 	        return;
 	    }
 	    var match = hash.match(detailsURL);
@@ -54,4 +56,9 @@
 	        });
 	    }
 	}
+    
+	function populateProductList() {
+		$('.product-list').html(productList(adapter.getProducts()));
+	}
+	
 }());
