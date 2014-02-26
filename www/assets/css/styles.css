@@ -1,5 +1,5 @@
 .back-button {
-    position: absolute;
+    position: relative;
     top: 10px;
 }
 
@@ -10,12 +10,17 @@
     background-size: cover;
 }
 
-.search-bar {
-    padding:10px 10px 12px 8px;
+.top-bar {
+    padding:10px 10px 12px 12px;
 }
 
-.search-bar > input {
-    width: 100%;
+.top-bar > input {
+    width: 70%;
+}
+
+#add-button {
+	display:inline-block;
+	float: right;
 }
 
 a {
@@ -70,6 +75,12 @@ a {
     background-color: #d6d6d6;
 }
 
+.quick-details {
+	white-space: nowrap;
+  	overflow: hidden;
+  	text-overflow: ellipsis;
+}
+
 .details {
     margin: auto;
 }
@@ -85,6 +96,9 @@ a {
     padding: 12px 0px 4px 0px;
     margin: 0px 0px 0px 0px;
     font-size: 1.2rem;
+    white-space: nowrap;
+  	overflow: hidden;
+  	text-overflow: ellipsis;
 }
 
 .details h2 {
@@ -168,7 +182,7 @@ a {
     width: 20px;
     height: 20px;
     position: absolute;
-    right: 12px;
+    right:2px;
     top: 22px;
     height: 50px;
     width: 28px;
@@ -182,4 +196,9 @@ a {
     bottom: 0px;
     left: 0px;
     right: 0px;
+}
+
+.product-detail {
+	width: auto;
+	height: auto;
 }
