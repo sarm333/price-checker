@@ -26,7 +26,7 @@
 		        navigator.notification.alert(
 		            message,    // message
 		            null,       // callback
-		            "Workshop", // title
+		            "Alert", // title
 		            'OK'        // buttonName
 		        );
 		    };
@@ -35,6 +35,7 @@
     
     $(window).on('hashchange', route);
     $(document).on('ready', populateProductList);
+    $('.add-button').on('click', clickedAddBtn);
 
 
     /* ---------------------------------- Local Functions ---------------------------------- */
@@ -60,5 +61,4 @@
 	function populateProductList() {
 		$('.product-list').html(productList(adapter.getProducts()));
 	}
-	
 }());

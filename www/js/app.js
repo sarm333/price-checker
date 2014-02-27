@@ -26,7 +26,7 @@
 		        navigator.notification.alert(
 		            message,    // message
 		            null,       // callback
-		            "Workshop", // title
+		            "Alert", // title
 		            'OK'        // buttonName
 		        );
 		    };
@@ -61,12 +61,4 @@
 	function populateProductList() {
 		$('.product-list').html(productList(adapter.getProducts()));
 	}
-	
-	function clickedAddBtn() {
-		//TODO: handle crappy urls
-		var input = $('.url-input').val();
-		console.log(input);
-	}
-	
-	
 }());
