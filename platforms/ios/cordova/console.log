@@ -297,3 +297,12 @@ objc[26107]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.a
 2014-02-26 19:30:15.867 PriceChecker[26107:80b] Unlimited access to network resources
 2014-02-26 19:30:15.957 PriceChecker[26107:80b] Resetting plugins due to page load.
 2014-02-26 19:30:16.117 PriceChecker[26107:80b] Finished load of: file:///Users/iSarm/Library/Application%20Support/iPhone%20Simulator/7.0.3-64/Applications/81648EE1-C45C-4BEF-8C4C-34B13C13B539/PriceChecker.app/www/index.html
+objc[2902]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
+2014-02-27 08:07:13.709 PriceChecker[2902:80b] Cannot find executable for CFBundle 0xa417c60 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
+2014-02-27 08:07:13.736 PriceChecker[2902:80b] Cannot find executable for CFBundle 0xa83ca50 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
+2014-02-27 08:07:13.837 PriceChecker[2902:80b] Multi-tasking -> Device: YES, App: YES
+2014-02-27 08:07:13.866 PriceChecker[2902:80b] Unlimited access to network resources
+2014-02-27 08:07:14.207 PriceChecker[2902:80b] Resetting plugins due to page load.
+2014-02-27 08:07:14.449 PriceChecker[2902:80b] Finished load of: file:///Users/iSarm/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/B5F8BBAF-54EB-4C1C-A6AA-AC3C30A51951/PriceChecker.app/www/index.html
+2014-02-27 08:07:18.704 PriceChecker[2902:80b] THREAD WARNING: ['Notification'] took '83.251953' ms. Plugin should use a background thread.
+2014-02-27 08:07:23.424 PriceChecker[2902:80b] THREAD WARNING: ['Notification'] took '77.675781' ms. Plugin should use a background thread.
