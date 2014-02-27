@@ -22,6 +22,10 @@ var HomeView = function (adapter, homePage, listItem) {
 		//TODO: handle crappy urls
 		var input = $('.url-input').val();
 		alert(input);
+//		 $.get(input, function(data) {
+//	          $('#div').html(data);
+//	          alert('Load was performed.');
+//	    });
 	}
 	
     

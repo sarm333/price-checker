@@ -198,6 +198,22 @@ a {
     right: 0px;
 }
 
+.frame {
+    -webkit-overflow-scrolling: touch;
+    position: absolute;
+}
+
+.bottom-bar {
+    position: fixed; 
+    bottom: 0px;
+}
+ 
+.icomatic {
+    font-size: auto;
+    text-rendering: optimizeLegibility;
+    font-weight:900;
+}
+
 .product-detail {
 	width: auto;
 	height: auto;

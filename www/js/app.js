@@ -35,8 +35,6 @@
     
     $(window).on('hashchange', route);
     $(document).on('ready', populateProductList);
-    $('.add-button').on('click', clickedAddBtn);
-
 
     /* ---------------------------------- Local Functions ---------------------------------- */
 
