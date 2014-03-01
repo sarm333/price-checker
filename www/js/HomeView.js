@@ -20,14 +20,23 @@ var HomeView = function (adapter, homePage, listItem) {
 
 	this.clickAddButton = function() {
 		//TODO: handle crappy urls
-		var input = $('.url-input').val();
-		alert(input);
-//		 $.get(input, function(data) {
-//	          $('#div').html(data);
-//	          alert('Load was performed.');
-//	    });
+		var input = $('.url-input').val().toLowerCase();
+
+		$.ajax({
+		    url: input,
+		    type: 'GET',
+		    dataType: 'xml',
+		    success: function(data) {
+		        var repsonse = data.responseText;
+		        console.log(repsonse);
+		    }
+		});
+
+//		$.get(input, function (data) { 
+//			console.log("Page Source: " + data.contents); 
+//		}); 
 	}
-	
-    
+
+
     this.initialize();
 }
