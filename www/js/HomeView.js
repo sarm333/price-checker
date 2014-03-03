@@ -27,14 +27,14 @@ var HomeView = function (adapter, homePage, listItem) {
 		    type: 'GET',
 		    dataType: 'xml',
 		    success: function(data) {
-		        var repsonse = data.responseText;
-		        console.log(repsonse);
+		        var response = data.responseText;
+		        var el = document.createElement( 'div' );
+		        el.innerHTML = response;
+		        var extractor = new RiverIslandExtractor(el);
+		        alert(extractor.getProductName());
+		        //console.log(extractor.getProductPrice());
 		    }
 		});
-
-//		$.get(input, function (data) { 
-//			console.log("Page Source: " + data.contents); 
-//		}); 
 	}
 
 
