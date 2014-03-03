@@ -1,5 +1,5 @@
 var HomeView = function (adapter, homePage, listItem) {
-	
+
 	this.initialize = function () {
 	    // Define a div wrapper for the view. The div wrapper is used to attach events.
 	    this.el = $('<div/>');
@@ -31,12 +31,13 @@ var HomeView = function (adapter, homePage, listItem) {
 		        var el = document.createElement( 'div' );
 		        el.innerHTML = response;
 		        var extractor = new RiverIslandExtractor(el);
-		        alert(extractor.getProductName());
-		        //console.log(extractor.getProductPrice());
+		        console.log(extractor.getProductName());
+		        console.log(extractor.getProductPrice());
+                console.log(extractor.getProductImageThumb());
+                console.log(extractor.getProductDescription());
 		    }
 		});
 	}
-
 
     this.initialize();
 }
