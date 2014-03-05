@@ -5,7 +5,7 @@
     var homePage = Handlebars.compile($("#home").html());
     var productList = Handlebars.compile($("#product-list").html());
     var productPage = Handlebars.compile($("#product").html());
-    var detailsURL = /^#products\/(\d{1,})/;
+    var detailsURL = /^#products\//;
     var slider = new PageSlider($('body'));
     
     var adapter = new MemoryAdapter();
@@ -50,8 +50,9 @@
 	        return;
 	    }
 	    var match = hash.match(detailsURL);
+        var id = hash.replace("#products/", "");
 	    if (match) {
-	        adapter.findById(Number(match[1])).done(function(productListItem) {
+	        adapter.findById(id).done(function(productListItem) {
 	        	slider.slidePage(new ProductView(adapter, productPage, productListItem).render().el);
 	        });
 	    }

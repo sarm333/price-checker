@@ -37,7 +37,7 @@ var MemoryAdapter = function() {
 
     this.isItemAlreadyInList = function(newId) {
         for(product in products) {
-            if(newId == products[product]["key"]) {
+            if(newId == products[product]["id"]) {
                 return true;
             }
         }
@@ -46,39 +46,39 @@ var MemoryAdapter = function() {
 
     this.addToProductList = function(productName, price, storeName, imageUrl, productUrl, description) {
         localStorage.clear();
-        var keyName = productName + price + storeName;
-        if(this.isItemAlreadyInList(keyName)) {
+        var id = storeName + productName;
+        id = id.replace(/ /gi, "_");
+        if(this.isItemAlreadyInList(id)) {
             alert("Item is already in your shopping list!");
         } else {
-            products.push(this.getProductEntry(products.length + 1, keyName, productName, price, storeName, imageUrl, productUrl, description));
+            products.push(this.getProductEntry(id, productName, price, storeName, imageUrl, productUrl, description));
         }
         this.storeLocally();
     }
 
     this.addToProductListFromDB = function(product) {
-        var extractedFromDB = product.split(",");
-        products.push(this.getProductEntry(parseInt(extractedFromDB[0]), extractedFromDB[1], extractedFromDB[2], extractedFromDB[3], extractedFromDB[4], extractedFromDB[5], extractedFromDB[6], extractedFromDB[7]));
+        var extractedFromDB = product.split("|");
+        products.push(this.getProductEntry(extractedFromDB[0], extractedFromDB[1], extractedFromDB[2], extractedFromDB[3], extractedFromDB[4], extractedFromDB[5], extractedFromDB[6]));
     }
 
-    this.getProductEntry = function(id, key, productName, price, storeName, imageUrl, productUrl, description) {
-        return {"id": id, "key": key, "productName": productName, "price": price, "store": storeName, "imageUrl": imageUrl, "productUrl": productUrl, "description": description}
+    this.getProductEntry = function(id, productName, price, storeName, imageUrl, productUrl, description) {
+        return {"id": id, "productName": productName, "price": price, "store": storeName, "imageUrl": imageUrl, "productUrl": productUrl, "description": description}
     }
 
     this.concatenateForDB = function(product) {
         strEntry = product["id"];
-        strEntry += "," + product["key"];
-        strEntry += "," + product["productName"];
-        strEntry += "," + product["price"];
-        strEntry += "," + product["store"];
-        strEntry += "," + product["imageUrl"];
-        strEntry += "," + product["productUrl"];
-        strEntry += "," + product["description"];
+        strEntry += "|" + product["productName"];
+        strEntry += "|" + product["price"];
+        strEntry += "|" + product["store"];
+        strEntry += "|" + product["imageUrl"];
+        strEntry += "|" + product["productUrl"];
+        strEntry += "|" + product["description"];
         return strEntry;
     }
 
     this.storeLocally = function() {
         for(product in products) {
-            localStorage.setItem(products[product]["id"].toString(), this.concatenateForDB(products[product]));
+            localStorage.setItem(products[product]["id"], this.concatenateForDB(products[product]));
         }
         //window.localStorage.clear();
     }
