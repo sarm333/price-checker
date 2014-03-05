@@ -46,18 +46,22 @@ var MemoryAdapter = function() {
 
     this.addToProductList = function(productName, price, storeName, imageUrl, productUrl, description) {
         localStorage.clear();
-        var newId = productName + price + storeName;
-        if(this.isItemAlreadyInList(newId)) {
+        var keyName = productName + price + storeName;
+        if(this.isItemAlreadyInList(keyName)) {
             alert("Item is already in your shopping list!");
         } else {
-            products.push({"id": products.length + 1, "key": newId, "productName": productName, "price": price, "store": storeName, "imageUrl": imageUrl, "productUrl": productUrl, "description": description});
+            products.push(this.getProductEntry(products.length + 1, keyName, productName, price, storeName, imageUrl, productUrl, description));
         }
         this.storeLocally();
     }
 
     this.addToProductListFromDB = function(product) {
         var extractedFromDB = product.split(",");
-        products.push({"id": parseInt(extractedFromDB[0]), "key": extractedFromDB[1], "productName": extractedFromDB[2], "price": extractedFromDB[3], "store": extractedFromDB[4], "imageUrl": extractedFromDB[5], "productUrl": extractedFromDB[6], "description": extractedFromDB[7]});
+        products.push(this.getProductEntry(parseInt(extractedFromDB[0]), extractedFromDB[1], extractedFromDB[2], extractedFromDB[3], extractedFromDB[4], extractedFromDB[5], extractedFromDB[6], extractedFromDB[7]));
+    }
+
+    this.getProductEntry = function(id, key, productName, price, storeName, imageUrl, productUrl, description) {
+        return {"id": id, "key": key, "productName": productName, "price": price, "store": storeName, "imageUrl": imageUrl, "productUrl": productUrl, "description": description}
     }
 
     this.concatenateForDB = function(product) {
