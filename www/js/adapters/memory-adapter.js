@@ -63,7 +63,5 @@ var MemoryAdapter = function() {
      * productUrl
      * description
      */
-    var products = [
-        {"id": 1, "uid": "asd", "productName": "Light wash two-tone denim shirt", "price": "£25.00", "store": "River Island", "imageUrl": "http://riverisland.scene7.com/is/image/RiverIsland/276846_main?$AltThumbNail$", "productUrl": "www.riverisland.com/men/shirts/denim-shirts/Light-wash-two-tone-denim-shirt-276846", "description": "Take on the denim trend in its most sophisticated form with this two-tone light wash denim shirt. Featuring grandad collar, contrast yoke and short rolled sleeves."}
-    ];
+    var products = [];
 }
