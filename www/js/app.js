@@ -11,6 +11,7 @@
     var adapter = new MemoryAdapter();
     
 	adapter.initialize().done(function () {
+        getListFromLocal();
 	    route();
 	});
 
@@ -59,4 +60,11 @@
 	function populateProductList() {
 		$('.product-list').html(productList(adapter.getProducts()));
 	}
+
+    function getListFromLocal() {
+        //window.localStorage.clear();
+        for (var i = 0; i < localStorage.length; i++){
+            adapter.addToProductListFromDB(localStorage.getItem(localStorage.key(i)));
+        }
+    }
 }());

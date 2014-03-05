@@ -36,7 +36,7 @@ var HomeView = function (adapter, homePage, listItem) {
                 console.log(extractor.getProductImageThumb());
                 console.log(extractor.getProductDescription());
 
-                adapter.addToProductList(extractor.getProductName(), extractor.getProductPrice(), "River Island", extractor.getProductImageThumb(), input, extractor.getProductDescription);
+                adapter.addToProductList(extractor.getProductName(), extractor.getProductPrice(), "River Island", extractor.getProductImageThumb(), input, extractor.getProductDescription());
                 $('.product-list').html(listItem(adapter.getProducts()));
 		    }
 		});
