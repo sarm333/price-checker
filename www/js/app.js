@@ -64,8 +64,10 @@
 
     function getListFromLocal() {
         //window.localStorage.clear();
-        for (var i = 0; i < localStorage.length; i++){
-            adapter.addToProductListFromDB(localStorage.getItem(localStorage.key(i)));
+        var productList = localStorage.getItem("productList");
+        if(productList != null) {
+            adapter.addProductListFromDB(JSON.parse(productList));
         }
+
     }
 }());

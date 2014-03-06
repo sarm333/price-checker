@@ -56,30 +56,16 @@ var MemoryAdapter = function() {
         this.storeLocally();
     }
 
-    this.addToProductListFromDB = function(product) {
-        var extractedFromDB = product.split("|");
-        products.push(this.getProductEntry(extractedFromDB[0], extractedFromDB[1], extractedFromDB[2], extractedFromDB[3], extractedFromDB[4], extractedFromDB[5], extractedFromDB[6]));
+    this.addProductListFromDB = function(productList) {
+        products = productList;
     }
 
     this.getProductEntry = function(id, productName, price, storeName, imageUrl, productUrl, description) {
-        return {"id": id, "productName": productName, "price": price, "store": storeName, "imageUrl": imageUrl, "productUrl": productUrl, "description": description}
-    }
-
-    this.concatenateForDB = function(product) {
-        strEntry = product["id"];
-        strEntry += "|" + product["productName"];
-        strEntry += "|" + product["price"];
-        strEntry += "|" + product["store"];
-        strEntry += "|" + product["imageUrl"];
-        strEntry += "|" + product["productUrl"];
-        strEntry += "|" + product["description"];
-        return strEntry;
+        return {"id": id, "productName": productName, "price": price, "store": storeName, "imageUrl": imageUrl, "productUrl": productUrl, "description": description};
     }
 
     this.storeLocally = function() {
-        for(product in products) {
-            localStorage.setItem(products[product]["id"], this.concatenateForDB(products[product]));
-        }
+        localStorage.setItem("productList", JSON.stringify(products));
         //window.localStorage.clear();
     }
 
