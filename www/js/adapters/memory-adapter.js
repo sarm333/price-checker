@@ -44,6 +44,17 @@ var MemoryAdapter = function() {
         return false;
     }
 
+    this.removeProductFromList = function(productId) {
+        localStorage.clear();
+        for(product in products) {
+            if(productId == products[product]["id"]) {
+                products.splice(product, 1);
+                break;
+            }
+        }
+        this.storeLocally();
+    }
+
     this.addToProductList = function(productName, price, storeName, imageUrl, productUrl, description) {
         localStorage.clear();
         var id = storeName + productName;

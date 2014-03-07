@@ -5,6 +5,8 @@ var HomeView = function (adapter, homePage, listItem) {
 	    this.el = $('<div/>');
 	    
 	    this.el.on('click', '.add-button', this.clickAddButton);
+        this.el.on('click', '.edit-button', this.clickEditButton);
+        this.el.on('click', '.remove-button', this.clickRemoveButton);
 	};
 
 	this.render = function() {
@@ -41,6 +43,16 @@ var HomeView = function (adapter, homePage, listItem) {
 		    }
 		});
 	}
+
+    this.clickEditButton = function() {
+        $( ".removal" ).toggle("slow");
+    }
+
+    this.clickRemoveButton = function() {
+        var productId = this.parentNode.parentNode.childNodes[1].hash.replace("#products/", "");
+        adapter.removeProductFromList(productId);
+        this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
+    }
 
     this.initialize();
 }

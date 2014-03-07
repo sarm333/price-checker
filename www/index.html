@@ -11,8 +11,14 @@
 
 <script id="home">
     <div class="topcoat-navigation-bar">
-        <div class="topcoat-navigation-bar__item center full">
-            <h1 class="topcoat-navigation-bar__title">Price Checker</h1>
+        <div class="topcoat-navigation-bar__item left quarter">
+            <p></p>
+        </div>
+        <div class="topcoat-navigation-bar__item center half">
+            <h1 class="topcoat-navigation-bar__title">Price Tracker</h1>
+        </div>
+        <div class="topcoat-navigation-bar__item right quarter">
+            <button class="topcoat-button--small edit-button" >Edit</button>
         </div>
     </div>
     <div class="top-bar">
@@ -47,11 +53,14 @@
     {{#.}}
     <li class="topcoat-list__item">
         <a href="#products/{{id}}">
-        	<img src="{{imageUrl}}">
-	        <p class="quick-details">{{productName}}</p>
-	        <p class="quick-details">{{store}} : {{price}}</p>
+            <img src="{{imageUrl}}">
+            <p class="quick-details">{{productName}}</p>
+            <p class="quick-details">{{store}} : {{price}}</p>
             <span class="chevron"></span><span class="count">{{reports}}</span>
         </a>
+        <div class="removal" style="display:none">
+            <button class="topcoat-button--small remove-button">Remove</button>
+        </div>
     </li>
     {{/.}}
 </script>

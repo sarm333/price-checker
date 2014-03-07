@@ -68,6 +68,5 @@
         if(productList != null) {
             adapter.addProductListFromDB(JSON.parse(productList));
         }
-
     }
 }());
