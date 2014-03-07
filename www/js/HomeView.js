@@ -42,11 +42,12 @@ var HomeView = function (adapter, homePage, listItem) {
                 $('.product-list').html(listItem(adapter.getProducts()));
 		    }
 		});
+        document.getElementsByClassName("edit-button")[0].innerHTML = "Edit";
 	}
 
     this.clickEditButton = function() {
         $( ".removal" ).toggle("slow");
-        if(this.innerHTML == "Edit") {
+        if(this.innerHTML == "Edit" && adapter.getProducts().length != 0) {
             this.innerHTML = "Done";
         } else {
             this.innerHTML = "Edit";
