@@ -46,12 +46,20 @@ var HomeView = function (adapter, homePage, listItem) {
 
     this.clickEditButton = function() {
         $( ".removal" ).toggle("slow");
+        if(this.innerHTML == "Edit") {
+            this.innerHTML = "Done";
+        } else {
+            this.innerHTML = "Edit";
+        }
     }
 
     this.clickRemoveButton = function() {
         var productId = this.parentNode.parentNode.childNodes[1].hash.replace("#products/", "");
         adapter.removeProductFromList(productId);
         this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
+        if(adapter.getProducts().length == 0) {
+            document.getElementsByClassName("edit-button")[0].innerHTML = "Edit";
+        }
     }
 
     this.initialize();
