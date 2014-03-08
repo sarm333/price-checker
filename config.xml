@@ -1,15 +1,18 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.sarm.pricechecker" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <name>PriceChecker</name>
+<widget id="com.sarm.tellme" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>Tell Me!</name>
     <description>
-        A sample Apache Cordova application that responds to the deviceready event.
+        An app to keep track of product prices.
     </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
-        Apache Cordova Team
+    <author email="sarm333@gmail.com">
+        Sarm Boonlertuthai
     </author>
     <content src="index.html" />
     <access origin="*" />
+    <access origin="*.pushwoosh.com" />
     
     <preference name="DisallowOverscroll" value="true" />
-    
+    <feature name="PushNotification">
+        <param name="ios-package" value="PushNotification" />
+    </feature>
 </widget>
