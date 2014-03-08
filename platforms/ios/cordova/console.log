@@ -1,50 +1,16 @@
-objc[1599]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
-2014-03-06 20:43:55.048 PriceChecker[1599:80b] Cannot find executable for CFBundle 0xa4c4340 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
-2014-03-06 20:43:55.076 PriceChecker[1599:80b] Cannot find executable for CFBundle 0xa790850 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
-2014-03-06 20:43:55.154 PriceChecker[1599:80b] Multi-tasking -> Device: YES, App: YES
-2014-03-06 20:43:55.184 PriceChecker[1599:80b] Unlimited access to network resources
-2014-03-06 20:43:55.506 PriceChecker[1599:80b] Resetting plugins due to page load.
-2014-03-06 20:43:55.760 PriceChecker[1599:80b] Finished load of: file:///Users/iSarm/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/B5F8BBAF-54EB-4C1C-A6AA-AC3C30A51951/PriceChecker.app/www/index.html
-2014-03-06 20:44:04.505 PriceChecker[1599:80b] White donut talk to me t-shirt
-2014-03-06 20:44:04.505 PriceChecker[1599:80b] £16.00
-2014-03-06 20:44:04.505 PriceChecker[1599:80b] http://riverisland.scene7.com/is/image/RiverIsland/652910_main?$AltThumbNail$
-2014-03-06 20:44:04.506 PriceChecker[1599:80b] Give your casual looks a quirky talking point in this white "donut talk to me" print oversized t-shirt. Featuring a crew neck and short rolled sleeves.
-objc[1809]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
-2014-03-06 20:49:20.271 PriceChecker[1809:80b] Cannot find executable for CFBundle 0xa58ee70 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
-2014-03-06 20:49:20.285 PriceChecker[1809:80b] Cannot find executable for CFBundle 0xab72a30 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
-2014-03-06 20:49:20.338 PriceChecker[1809:80b] Multi-tasking -> Device: YES, App: YES
-2014-03-06 20:49:20.350 PriceChecker[1809:80b] Unlimited access to network resources
-2014-03-06 20:49:20.473 PriceChecker[1809:80b] Resetting plugins due to page load.
-2014-03-06 20:49:20.658 PriceChecker[1809:80b] Finished load of: file:///Users/iSarm/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/B5F8BBAF-54EB-4C1C-A6AA-AC3C30A51951/PriceChecker.app/www/index.html
-objc[2413]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
-2014-03-06 22:00:42.637 PriceChecker[2413:80b] Cannot find executable for CFBundle 0xa624140 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
-2014-03-06 22:00:42.650 PriceChecker[2413:80b] Cannot find executable for CFBundle 0xa73fc60 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
-2014-03-06 22:00:42.732 PriceChecker[2413:80b] Multi-tasking -> Device: YES, App: YES
-2014-03-06 22:00:42.742 PriceChecker[2413:80b] Unlimited access to network resources
-2014-03-06 22:00:42.936 PriceChecker[2413:80b] Resetting plugins due to page load.
-2014-03-06 22:00:43.134 PriceChecker[2413:80b] Finished load of: file:///Users/iSarm/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/B5F8BBAF-54EB-4C1C-A6AA-AC3C30A51951/PriceChecker.app/www/index.html
-objc[2800]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
-2014-03-06 22:32:57.592 PriceChecker[2800:80b] Cannot find executable for CFBundle 0xa653900 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
-2014-03-06 22:32:57.608 PriceChecker[2800:80b] Cannot find executable for CFBundle 0xa54a070 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
-2014-03-06 22:32:57.709 PriceChecker[2800:80b] Multi-tasking -> Device: YES, App: YES
-2014-03-06 22:32:57.718 PriceChecker[2800:80b] Unlimited access to network resources
-2014-03-06 22:32:57.889 PriceChecker[2800:80b] Resetting plugins due to page load.
-2014-03-06 22:32:58.095 PriceChecker[2800:80b] Finished load of: file:///Users/iSarm/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/B5F8BBAF-54EB-4C1C-A6AA-AC3C30A51951/PriceChecker.app/www/index.html
-objc[2188]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
-2014-03-07 19:52:56.019 PriceChecker[2188:80b] Cannot find executable for CFBundle 0xa743cc0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
-2014-03-07 19:52:56.038 PriceChecker[2188:80b] Cannot find executable for CFBundle 0xab54140 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
-2014-03-07 19:52:56.135 PriceChecker[2188:80b] Multi-tasking -> Device: YES, App: YES
-2014-03-07 19:52:56.188 PriceChecker[2188:80b] Unlimited access to network resources
-2014-03-07 19:52:56.478 PriceChecker[2188:80b] Resetting plugins due to page load.
-2014-03-07 19:52:58.155 PriceChecker[2188:80b] Finished load of: file:///Users/iSarm/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/B5F8BBAF-54EB-4C1C-A6AA-AC3C30A51951/PriceChecker.app/www/index.html
-objc[2547]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
-2014-03-07 20:16:10.699 PriceChecker[2547:80b] Cannot find executable for CFBundle 0xa8b44e0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
-2014-03-07 20:16:10.723 PriceChecker[2547:80b] Cannot find executable for CFBundle 0xa59bef0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
-2014-03-07 20:16:10.819 PriceChecker[2547:80b] Multi-tasking -> Device: YES, App: YES
-2014-03-07 20:16:10.828 PriceChecker[2547:80b] Unlimited access to network resources
-2014-03-07 20:16:10.997 PriceChecker[2547:80b] Resetting plugins due to page load.
-2014-03-07 20:16:11.894 PriceChecker[2547:80b] Finished load of: file:///Users/iSarm/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/B5F8BBAF-54EB-4C1C-A6AA-AC3C30A51951/PriceChecker.app/www/index.html
-2014-03-07 20:16:29.121 PriceChecker[2547:80b] White donut talk to me t-shirt
-2014-03-07 20:16:29.121 PriceChecker[2547:80b] £16.00
-2014-03-07 20:16:29.122 PriceChecker[2547:80b] http://riverisland.scene7.com/is/image/RiverIsland/652910_main?$AltThumbNail$
-2014-03-07 20:16:29.122 PriceChecker[2547:80b] Give your casual looks a quirky talking point in this white "donut talk to me" print oversized t-shirt. Featuring a crew neck and short rolled sleeves.
+2014-03-08 23:32:14.008 Tell Me![33106:80b] Initializing application: (null), (null)
+objc[33106]: Class AXEmojiUtilities is implemented in both /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/PrivateFrameworks/AccessibilityUtilities.framework/AccessibilityUtilities and /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/usr/lib/libAXSpeechManager.dylib. One of the two will be used. Which one is undefined.
+2014-03-08 23:32:14.114 Tell Me![33106:80b] Cannot find executable for CFBundle 0xaa820c0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/AccessibilityBundles/GeoServices.axbundle> (not loaded)
+2014-03-08 23:32:14.149 Tell Me![33106:80b] Cannot find executable for CFBundle 0xaa889d0 </Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator7.0.sdk/System/Library/AccessibilityBundles/CertUIFramework.axbundle> (not loaded)
+2014-03-08 23:32:14.219 Tell Me![33106:80b] Multi-tasking -> Device: YES, App: YES
+2014-03-08 23:32:14.282 Tell Me![33106:80b] Unlimited access to network resources
+2014-03-08 23:32:14.381 Tell Me![33106:80b] Will show push notifications alert
+2014-03-08 23:32:14.384 Tell Me![33106:5903] Sending request: {"request":{"hwid":"4B312C66-16A1-4B5A-952E-D4DD08EB66FD","application":"com.sarm.tellme","v":"2.0"}}
+2014-03-08 23:32:14.384 Tell Me![33106:5903] To urL https://cp.pushwoosh.com/json/1.3/applicationOpen
+2014-03-08 23:32:14.582 Tell Me![33106:80b] Resetting plugins due to page load.
+2014-03-08 23:32:14.631 Tell Me![33106:5903] Response "200 no error": string: {"status_code":210,"status_message":"Application not found","response":null}
+2014-03-08 23:32:14.632 Tell Me![33106:5903] sending appOpen failed
+2014-03-08 23:32:14.769 Tell Me![33106:80b] Finished load of: file:///Users/iSarm/Library/Application%20Support/iPhone%20Simulator/7.0.3/Applications/8E28C2F7-D1C2-4462-AAB8-0099B0EFE50D/Tell%20Me!.app/www/index.html
+2014-03-08 23:32:14.798 Tell Me![33106:80b] Error registering for push notifications. Error: Error Domain=NSCocoaErrorDomain Code=3010 "remote notifications are not supported in the simulator" UserInfo=0xa5990e0 {NSLocalizedDescription=remote notifications are not supported in the simulator}
+2014-03-08 23:32:14.800 Tell Me![33106:80b] WARN: failed to register : {"error":"Error Domain=NSCocoaErrorDomain Code=3010 \"remote notifications are not supported in the simulator\" UserInfo=0xa5990e0 {NSLocalizedDescription=remote notifications are not supported in the simulator}"}
+2014-03-08 23:32:14.823 Tell Me![33106:80b] THREAD WARNING: ['Notification'] took '22.935303' ms. Plugin should use a background thread.

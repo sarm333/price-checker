@@ -45,7 +45,6 @@ var MemoryAdapter = function() {
     }
 
     this.removeProductFromList = function(productId) {
-        localStorage.clear();
         for(var product in products) {
             if(productId == products[product]["id"]) {
                 products.splice(product, 1);
@@ -56,7 +55,6 @@ var MemoryAdapter = function() {
     }
 
     this.addToProductList = function(productName, price, merchantName, imageUrl, productUrl, description) {
-        localStorage.clear();
         var id = merchantName + "_" + productName;
         id = id.replace(/ /gi, "_").toLowerCase();
         if(this.isItemAlreadyInList(id)) {
@@ -67,7 +65,21 @@ var MemoryAdapter = function() {
         this.storeLocally();
     }
 
-    this.addProductListFromDB = function(productList) {
+    this.updateExistingProductInfo = function(productId, updatedPrice, updatedImageUrl, updatedDescription) {
+        for(var product in products) {
+            if(productId == products[product]["id"]) {
+                products[product]["price"] = updatedPrice;
+                products[product]["imageUrl"] = updatedImageUrl;
+                products[product]["description"] = updatedDescription;
+
+                this.storeLocally();
+                return true;
+            }
+        }
+        return false;
+    }
+
+    this.setProductList= function(productList) {
         products = productList;
     }
 
@@ -75,9 +87,12 @@ var MemoryAdapter = function() {
         return {"id": id, "productName": productName, "price": price, "merchant": storeName, "imageUrl": imageUrl, "productUrl": productUrl, "description": description};
     }
 
+    /**
+     * First clear local storage, then store the product list.
+     */
     this.storeLocally = function() {
+        localStorage.clear();
         localStorage.setItem("productList", JSON.stringify(products));
-        //window.localStorage.clear();
     }
 
     /*

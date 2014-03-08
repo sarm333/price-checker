@@ -25,17 +25,22 @@
 .add-button {
 	display: inline-block;
 	float: right;
+    color: #1e7dc8;
 }
 
 .edit-button {
     display: inline-block;
-    float: right;
-    color: #6fb5f1;
+    color: #1e7dc8;
 }
 
 .refresh-button {
     display: inline-block;
-    color: #6fb5f1;
+    color: #1e7dc8;
+}
+
+.back-button {
+    color: #1e7dc8;
+    bottom:10px;
 }
 
 #remove-button {
