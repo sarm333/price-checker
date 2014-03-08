@@ -45,8 +45,10 @@
     function route() {
 	    var hash = window.location.hash;
 	    if (!hash) {
-	    	slider.slidePage(new HomeView(adapter, homePage, productList).render().el);
+            var homeView = new HomeView(adapter, homePage, productList);
+	    	slider.slidePage(homeView.render().el);
 	    	populateProductList();
+            homeView.refreshProductList();
 	        return;
 	    }
 	    var match = hash.match(detailsURL);

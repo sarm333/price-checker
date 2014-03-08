@@ -79,15 +79,26 @@ var HomeView = function (adapter, homePage, listItem) {
     }
 
 
-    this.updateProductInfoFromUrl = function(url) {
+    this.updateProductInfoFromUrl = function(product) {
         //TODO: handle crappy urls
         $.ajax({
-            url: url,
+            url: product["productUrl"],
             type: 'GET',
             dataType: 'xml',
             success: function(data) {
                 var response = data.responseText;
-                //TODO: update product info within the DB
+
+                //Get correct extractor
+                var newProduct = homeView.getExtractor(response, product["productUrl"]);
+                console.log(newProduct.getProductName());
+                console.log(newProduct.getProductPrice());
+                console.log(newProduct.getProductImageThumb());
+                console.log(newProduct.getProductDescription());
+                console.log();
+                //Store new details
+                adapter.updateExistingProductInfo(product["id"], newProduct.getProductPrice(), newProduct.getProductImageThumb(), newProduct.getProductDescription());
+                $('.product-list').html(listItem(adapter.getProducts()));
+                document.getElementsByClassName("edit-button")[0].innerHTML = "Edit";
             }
         });
     }
@@ -113,7 +124,7 @@ var HomeView = function (adapter, homePage, listItem) {
     this.refreshProductList = function() {
         var productList = adapter.getProducts();
         for(var product in productList) {
-           homeView.updateProductInfoFromUrl(productList[product]["productUrl"]);
+           homeView.updateProductInfoFromUrl(productList[product]);
         }
     }
 
