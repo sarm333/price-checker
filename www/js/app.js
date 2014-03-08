@@ -12,7 +12,10 @@
     
 	adapter.initialize().done(function () {
         getListFromLocal();
-	    route().refreshProductList();
+	    var homeView = route();
+        if(!window.location.hash) {
+            homeView.refreshProductList();
+        }
 	});
 
     /* --------------------------------- Event Registration -------------------------------- */

@@ -25,7 +25,7 @@ var HomeView = function (adapter, homePage, listItem) {
 	}
 
     this.clickEditButton = function() {
-        $( ".removal" ).toggle("slow");
+        $( ".removal" ).toggle("fast");
         if(this.innerHTML == "Edit" && adapter.getProducts().length != 0) {
             this.innerHTML = "Done";
         } else {
