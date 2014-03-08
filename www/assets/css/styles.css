@@ -18,9 +18,34 @@
     width: 70%;
 }
 
-#add-button {
-	display:inline-block;
+.top-nav-bar {
+
+}
+
+.add-button {
+	display: inline-block;
 	float: right;
+}
+
+.edit-button {
+    display: inline-block;
+    float: right;
+    color: #6fb5f1;
+}
+
+.refresh-button {
+    display: inline-block;
+    color: #6fb5f1;
+}
+
+#remove-button {
+    display:inline-block;
+    float: right;
+    position: absolute;
+    right:2px;
+    top: 22px;
+    height: 50px;
+    width: 28px;
 }
 
 a {
@@ -218,3 +243,4 @@ a {
 	width: auto;
 	height: auto;
 }
+

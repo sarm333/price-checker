@@ -1,5 +1,7 @@
 var HomeView = function (adapter, homePage, listItem) {
 
+    var homeView = this;
+
 	this.initialize = function () {
 	    // Define a div wrapper for the view. The div wrapper is used to attach events.
 	    this.el = $('<div/>');
@@ -7,6 +9,7 @@ var HomeView = function (adapter, homePage, listItem) {
 	    this.el.on('click', '.add-button', this.clickAddButton);
         this.el.on('click', '.edit-button', this.clickEditButton);
         this.el.on('click', '.remove-button', this.clickRemoveButton);
+        this.el.on('click', '.refresh-button', this.refreshProductList);
 	};
 
 	this.render = function() {
@@ -30,20 +33,26 @@ var HomeView = function (adapter, homePage, listItem) {
 		    dataType: 'xml',
 		    success: function(data) {
 		        var response = data.responseText;
-		        var el = document.createElement( 'div' );
-		        el.innerHTML = response;
-		        var extractor = new RiverIslandExtractor(el);
-		        console.log(extractor.getProductName());
-		        console.log(extractor.getProductPrice());
-                console.log(extractor.getProductImageThumb());
-                console.log(extractor.getProductDescription());
 
-                adapter.addToProductList(extractor.getProductName(), extractor.getProductPrice(), "River Island", extractor.getProductImageThumb(), input, extractor.getProductDescription());
+                homeView.extractProductInfo(response, input);
+
                 $('.product-list').html(listItem(adapter.getProducts()));
+                document.getElementsByClassName("edit-button")[0].innerHTML = "Edit";
 		    }
 		});
-        document.getElementsByClassName("edit-button")[0].innerHTML = "Edit";
 	}
+
+    this.extractProductInfo = function(htmlResponse, url) {
+        var el = document.createElement( 'div' );
+        el.innerHTML = htmlResponse;
+        var extractor = new RiverIslandExtractor(el);
+        console.log(extractor.getProductName());
+        console.log(extractor.getProductPrice());
+        console.log(extractor.getProductImageThumb());
+        console.log(extractor.getProductDescription());
+
+        adapter.addToProductList(extractor.getProductName(), extractor.getProductPrice(), "River Island", extractor.getProductImageThumb(), url, extractor.getProductDescription());
+    }
 
     this.clickEditButton = function() {
         $( ".removal" ).toggle("slow");
@@ -61,6 +70,10 @@ var HomeView = function (adapter, homePage, listItem) {
         if(adapter.getProducts().length == 0) {
             document.getElementsByClassName("edit-button")[0].innerHTML = "Edit";
         }
+    }
+
+    this.refreshProductList = function() {
+
     }
 
     this.initialize();
