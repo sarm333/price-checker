@@ -12,7 +12,7 @@
     
 	adapter.initialize().done(function () {
         getListFromLocal();
-	    route();
+	    route().refreshProductList();
 	});
 
     /* --------------------------------- Event Registration -------------------------------- */
@@ -48,8 +48,7 @@
             var homeView = new HomeView(adapter, homePage, productList);
 	    	slider.slidePage(homeView.render().el);
 	    	populateProductList();
-            homeView.refreshProductList();
-	        return;
+	        return homeView;
 	    }
 	    var match = hash.match(detailsURL);
         var id = hash.replace("#products/", "");
