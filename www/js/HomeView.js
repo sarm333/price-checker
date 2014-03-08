@@ -43,15 +43,20 @@ var HomeView = function (adapter, homePage, listItem) {
 	}
 
     this.extractProductInfo = function(htmlResponse, url) {
-        var el = document.createElement( 'div' );
-        el.innerHTML = htmlResponse;
-        var extractor = new RiverIslandExtractor(el);
+        var extractor = this.handleUrl(htmlResponse, url);
         console.log(extractor.getProductName());
         console.log(extractor.getProductPrice());
         console.log(extractor.getProductImageThumb());
         console.log(extractor.getProductDescription());
 
-        adapter.addToProductList(extractor.getProductName(), extractor.getProductPrice(), "River Island", extractor.getProductImageThumb(), url, extractor.getProductDescription());
+        adapter.addToProductList(extractor.getProductName(), extractor.getProductPrice(), extractor.getMerchantName(), extractor.getProductImageThumb(), url, extractor.getProductDescription());
+    }
+
+    this.handleUrl = function(htmlResponse, url) {
+        var el = document.createElement( 'div' );
+        el.innerHTML = htmlResponse;
+        var merchantHandler = new MerchantHandler(url, el);
+        return merchantHandler.getMerchantExtractor();
     }
 
     this.clickEditButton = function() {

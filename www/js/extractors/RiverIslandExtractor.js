@@ -1,5 +1,5 @@
 var RiverIslandExtractor = function(pageDocument) {
-	var STORE_NAME = "River Island";
+	var MERCHANT_NAME = "River Island";
 	var productDetailsTag = pageDocument.querySelectorAll('.product-details-container')[0];
 	
 	this.getProductName = function() {
@@ -23,5 +23,9 @@ var RiverIslandExtractor = function(pageDocument) {
     this.getProductDescription = function() {
         var descriptionNode = productDetailsTag.getElementsByClassName("description-copy")[0];
         return descriptionNode.getElementsByTagName("p")[0].innerHTML;
+    }
+
+    this.getMerchantName = function() {
+        return MERCHANT_NAME;
     }
 }

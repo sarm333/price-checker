@@ -36,7 +36,7 @@ var MemoryAdapter = function() {
     }
 
     this.isItemAlreadyInList = function(newId) {
-        for(product in products) {
+        for(var product in products) {
             if(newId == products[product]["id"]) {
                 return true;
             }
@@ -46,7 +46,7 @@ var MemoryAdapter = function() {
 
     this.removeProductFromList = function(productId) {
         localStorage.clear();
-        for(product in products) {
+        for(var product in products) {
             if(productId == products[product]["id"]) {
                 products.splice(product, 1);
                 break;
@@ -55,14 +55,14 @@ var MemoryAdapter = function() {
         this.storeLocally();
     }
 
-    this.addToProductList = function(productName, price, storeName, imageUrl, productUrl, description) {
+    this.addToProductList = function(productName, price, merchantName, imageUrl, productUrl, description) {
         localStorage.clear();
-        var id = storeName + productName;
-        id = id.replace(/ /gi, "_");
+        var id = merchantName + "_" + productName;
+        id = id.replace(/ /gi, "_").toLowerCase();
         if(this.isItemAlreadyInList(id)) {
             alert("Item is already in your shopping list!");
         } else {
-            products.push(this.getProductEntry(id, productName, price, storeName, imageUrl, productUrl, description));
+            products.push(this.getProductEntry(id, productName, price, merchantName, imageUrl, productUrl, description));
         }
         this.storeLocally();
     }
@@ -72,7 +72,7 @@ var MemoryAdapter = function() {
     }
 
     this.getProductEntry = function(id, productName, price, storeName, imageUrl, productUrl, description) {
-        return {"id": id, "productName": productName, "price": price, "store": storeName, "imageUrl": imageUrl, "productUrl": productUrl, "description": description};
+        return {"id": id, "productName": productName, "price": price, "merchant": storeName, "imageUrl": imageUrl, "productUrl": productUrl, "description": description};
     }
 
     this.storeLocally = function() {
