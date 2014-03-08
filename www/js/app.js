@@ -66,7 +66,7 @@
         //window.localStorage.clear();
         var productList = localStorage.getItem("productList");
         if(productList != null) {
-            adapter.addProductListFromDB(JSON.parse(productList));
+            adapter.setProductList(JSON.parse(productList));
         }
     }
 }());

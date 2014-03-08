@@ -27,20 +27,23 @@ var HomeView = function (adapter, homePage, listItem) {
 		//TODO: handle crappy urls
 		var input = $('.url-input').val().toLowerCase();
 
-		$.ajax({
-		    url: input,
-		    type: 'GET',
-		    dataType: 'xml',
-		    success: function(data) {
-		        var response = data.responseText;
+        homeView.getProductInfoFromUrl(input);
+	}
 
-                homeView.extractProductInfo(response, input);
+    this.getProductInfoFromUrl = function(url) {
+        $.ajax({
+            url: url,
+            type: 'GET',
+            dataType: 'xml',
+            success: function(data) {
+                var response = data.responseText;
+                homeView.extractProductInfo(response, url);
 
                 $('.product-list').html(listItem(adapter.getProducts()));
                 document.getElementsByClassName("edit-button")[0].innerHTML = "Edit";
-		    }
-		});
-	}
+            }
+        });
+    }
 
     this.extractProductInfo = function(htmlResponse, url) {
         var extractor = this.handleUrl(htmlResponse, url);
@@ -78,7 +81,10 @@ var HomeView = function (adapter, homePage, listItem) {
     }
 
     this.refreshProductList = function() {
-
+        var productList = adapter.getProducts();
+        for(var product in productList) {
+            console.log(productList[product]);
+        }
     }
 
     this.initialize();

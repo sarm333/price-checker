@@ -67,7 +67,7 @@ var MemoryAdapter = function() {
         this.storeLocally();
     }
 
-    this.addProductListFromDB = function(productList) {
+    this.setProductList= function(productList) {
         products = productList;
     }
 
