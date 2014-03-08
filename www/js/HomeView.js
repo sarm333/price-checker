@@ -9,58 +9,20 @@ var HomeView = function (adapter, homePage, listItem) {
 	    this.el.on('click', '.add-button', this.clickAddButton);
         this.el.on('click', '.edit-button', this.clickEditButton);
         this.el.on('click', '.remove-button', this.clickRemoveButton);
-        this.el.on('click', '.refresh-button', this.refreshProductList);
+        this.el.on('click', '.refresh-button', this.clickRefreshButton);
 	};
 
 	this.render = function() {
 		this.el.html(homePage());
     	return this;
 	};
-	
-//	this.findByName = function() {
-//    	adapter.findByName($('.search-key').val()).done(function (products) {
-//            $('.product-list').html(listItem(products));
-//        });
-//    }
+
+    /* ---------------------------------- Button Listeners ---------------------------------- */
 
 	this.clickAddButton = function() {
-		//TODO: handle crappy urls
 		var input = $('.url-input').val().toLowerCase();
-
-        homeView.getProductInfoFromUrl(input);
+        homeView.storeProductInfoFromUrl(input);
 	}
-
-    this.getProductInfoFromUrl = function(url) {
-        $.ajax({
-            url: url,
-            type: 'GET',
-            dataType: 'xml',
-            success: function(data) {
-                var response = data.responseText;
-                homeView.extractProductInfo(response, url);
-
-                $('.product-list').html(listItem(adapter.getProducts()));
-                document.getElementsByClassName("edit-button")[0].innerHTML = "Edit";
-            }
-        });
-    }
-
-    this.extractProductInfo = function(htmlResponse, url) {
-        var extractor = this.handleUrl(htmlResponse, url);
-        console.log(extractor.getProductName());
-        console.log(extractor.getProductPrice());
-        console.log(extractor.getProductImageThumb());
-        console.log(extractor.getProductDescription());
-
-        adapter.addToProductList(extractor.getProductName(), extractor.getProductPrice(), extractor.getMerchantName(), extractor.getProductImageThumb(), url, extractor.getProductDescription());
-    }
-
-    this.handleUrl = function(htmlResponse, url) {
-        var el = document.createElement( 'div' );
-        el.innerHTML = htmlResponse;
-        var merchantHandler = new MerchantHandler(url, el);
-        return merchantHandler.getMerchantExtractor();
-    }
 
     this.clickEditButton = function() {
         $( ".removal" ).toggle("slow");
@@ -80,10 +42,78 @@ var HomeView = function (adapter, homePage, listItem) {
         }
     }
 
+    this.clickRefreshButton = function() {
+        homeView.refreshProductList();
+    }
+
+    /* ---------------------------------- HomeView Functions ---------------------------------- */
+
+    /**
+     * Stores product info from a given url into the list within the memory adaptor as well as the html list.
+     * @param url
+     * @returns {null}
+     */
+    this.storeProductInfoFromUrl = function(url) {
+        //TODO: handle crappy urls
+        $.ajax({
+            url: url,
+            type: 'GET',
+            dataType: 'xml',
+            success: function(data) {
+                var response = data.responseText;
+
+                //Get correct extractor
+                var extractor = homeView.getExtractor(response, url);
+                console.log(extractor.getProductName());
+                console.log(extractor.getProductPrice());
+                console.log(extractor.getProductImageThumb());
+                console.log(extractor.getProductDescription());
+
+                //store in list within mem adapter
+                adapter.addToProductList(extractor.getProductName(), extractor.getProductPrice(), extractor.getMerchantName(), extractor.getProductImageThumb(), url, extractor.getProductDescription());
+
+                $('.product-list').html(listItem(adapter.getProducts()));                   //populate list within html
+                document.getElementsByClassName("edit-button")[0].innerHTML = "Edit";       //set the Edit button to 'edit' if its still in removal mode.
+            }
+        });
+    }
+
+
+    this.updateProductInfoFromUrl = function(url) {
+        //TODO: handle crappy urls
+        $.ajax({
+            url: url,
+            type: 'GET',
+            dataType: 'xml',
+            success: function(data) {
+                var response = data.responseText;
+                //TODO: update product info within the DB
+            }
+        });
+    }
+
+
+
+    /**
+     * Will return the appropriate extractor depending on the url.
+     * @param htmlResponse
+     * @param url
+     * @returns {*}
+     */
+    this.getExtractor = function(htmlResponse, url) {
+        var el = document.createElement( 'div' );
+        el.innerHTML = htmlResponse;
+        var merchantHandler = new MerchantHandler(url, el);
+        return merchantHandler.getMerchantExtractor();
+    }
+
+    /**
+     * Refreshes the product list info.
+     */
     this.refreshProductList = function() {
         var productList = adapter.getProducts();
         for(var product in productList) {
-            console.log(productList[product]);
+           homeView.updateProductInfoFromUrl(productList[product]["productUrl"]);
         }
     }
 
