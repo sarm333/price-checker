@@ -72,7 +72,7 @@ var HomeView = function (adapter, homePage, listItem) {
                 //store in list within mem adapter
                 adapter.addToProductList(extractor.getProductName(), extractor.getProductPrice(), extractor.getMerchantName(), extractor.getProductImageThumb(), url, extractor.getProductDescription());
 
-                $('.product-list').html(listItem(adapter.getProducts()));                   //populate list within html
+                homeView.populateProductList(listItem);
                 document.getElementsByClassName("edit-button")[0].innerHTML = "Edit";       //set the Edit button to 'edit' if its still in removal mode.
             }
         });
@@ -97,7 +97,7 @@ var HomeView = function (adapter, homePage, listItem) {
                 console.log();
                 //Store new details
                 adapter.updateExistingProductInfo(product["id"], newProduct.getProductPrice(), newProduct.getProductImageThumb(), newProduct.getProductDescription());
-                $('.product-list').html(listItem(adapter.getProducts()));
+                homeView.populateProductList(listItem);
                 document.getElementsByClassName("edit-button")[0].innerHTML = "Edit";
             }
         });
@@ -126,6 +126,10 @@ var HomeView = function (adapter, homePage, listItem) {
         for(var product in productList) {
            homeView.updateProductInfoFromUrl(productList[product]);
         }
+    }
+
+    this.populateProductList = function(productList) {
+        $('.product-list').html(productList(adapter.getProducts()));
     }
 
     this.initialize();

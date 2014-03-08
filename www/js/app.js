@@ -47,7 +47,7 @@
 	    if (!hash) {
             var homeView = new HomeView(adapter, homePage, productList);
 	    	slider.slidePage(homeView.render().el);
-	    	populateProductList();
+            homeView.populateProductList(productList);
             homeView.refreshProductList();
 	        return;
 	    }
@@ -58,10 +58,6 @@
 	        	slider.slidePage(new ProductView(adapter, productPage, productListItem).render().el);
 	        });
 	    }
-	}
-    
-	function populateProductList() {
-		$('.product-list').html(productList(adapter.getProducts()));
 	}
 
     function getListFromLocal() {
