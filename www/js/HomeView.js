@@ -58,16 +58,17 @@ var HomeView = function (adapter, homePage, listItem) {
         $.ajax({
             url: url,
             type: 'GET',
+            timeout: 8000,
             dataType: 'xml',
             success: function(data) {
                 var response = data.responseText;
 
                 //Get correct extractor
                 var extractor = homeView.getExtractor(response, url);
-                console.log(extractor.getProductName());
+                /*console.log(extractor.getProductName());
                 console.log(extractor.getProductPrice());
                 console.log(extractor.getProductImageThumb());
-                console.log(extractor.getProductDescription());
+                console.log(extractor.getProductDescription());*/
 
                 //store in list within mem adapter
                 adapter.addToProductList(extractor.getProductName(), extractor.getProductPrice(), extractor.getMerchantName(), extractor.getProductImageThumb(), url, extractor.getProductDescription());
@@ -84,17 +85,18 @@ var HomeView = function (adapter, homePage, listItem) {
         $.ajax({
             url: product["productUrl"],
             type: 'GET',
+            timeout: 8000,
             dataType: 'xml',
             success: function(data) {
                 var response = data.responseText;
 
                 //Get correct extractor
                 var newProduct = homeView.getExtractor(response, product["productUrl"]);
-                console.log(newProduct.getProductName());
+                /*console.log(newProduct.getProductName());
                 console.log(newProduct.getProductPrice());
                 console.log(newProduct.getProductImageThumb());
                 console.log(newProduct.getProductDescription());
-                console.log();
+                console.log();*/
                 //Store new details
                 adapter.updateExistingProductInfo(product["id"], newProduct.getProductPrice(), newProduct.getProductImageThumb(), newProduct.getProductDescription());
                 homeView.populateProductList(listItem);
@@ -126,6 +128,7 @@ var HomeView = function (adapter, homePage, listItem) {
         for(var product in productList) {
            homeView.updateProductInfoFromUrl(productList[product]);
         }
+        //spinner.spin(false);
     }
 
     this.populateProductList = function(productList) {
