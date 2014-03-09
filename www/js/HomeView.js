@@ -51,7 +51,6 @@ var HomeView = function (adapter, homePage, listItem) {
     /**
      * Stores product info from a given url into the list within the memory adaptor as well as the html list.
      * @param url
-     * @returns {null}
      */
     this.storeProductInfoFromUrl = function(url) {
         //TODO: handle crappy urls

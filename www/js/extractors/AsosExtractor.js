@@ -26,13 +26,13 @@ var AsosExtractor = function(pageDocument) {
         var infoTag = pageDocument.querySelectorAll(".single-entry")[0];
 
         var item = infoTag.getElementsByTagName("strong")[0].innerHTML;
-        var byRetailer = infoTag.getElementsByTagName("strong")[1].innerHTML.replace("<br>", "").replace("&amp;", "and");
-        description += item + " by " + byRetailer + "\n";
+        var byRetailer = infoTag.getElementsByTagName("strong")[1].innerHTML.replace("&amp;", "and");
+        description += item + " by " + byRetailer + " | ";
 
         var infoList = infoTag.getElementsByTagName("ul")[0].getElementsByTagName("li");
         for(var info = 0; info < infoList.length; info++) {
             //TODO: line break not working
-            description += infoList[info].getElementsByTagName("p")[0].innerHTML + '\n';
+            description += infoList[info].getElementsByTagName("p")[0].innerHTML + ' | ';
         }
         return description;
     }
