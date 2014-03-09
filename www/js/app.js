@@ -83,7 +83,6 @@
     function initPushwoosh() {
         var pushNotification = window.plugins.pushNotification;
         pushNotification.onDeviceReady();
-
         pushNotification.registerDevice({alert:true, badge:true, sound:true, pw_appid:"F2065-451A7", appname:"Tell Me!"},
             function(status) {
                 var deviceToken = status['deviceToken'];
@@ -96,7 +95,6 @@
         );
 
         pushNotification.setApplicationIconBadgeNumber(0);
-
         document.addEventListener('push-notification', function(event) {
             var notification = event.notification;
             navigator.notification.alert(notification.aps.alert);
