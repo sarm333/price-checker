@@ -62,7 +62,6 @@ var HomeView = function (adapter, homePage, listItem) {
             dataType: 'xml',
             success: function(data) {
                 var response = data.responseText;
-
                 //Get correct extractor
                 var extractor = homeView.getExtractor(response, url);
                 /*console.log(extractor.getProductName());
@@ -114,9 +113,7 @@ var HomeView = function (adapter, homePage, listItem) {
      * @returns {*}
      */
     this.getExtractor = function(htmlResponse, url) {
-        var el = document.createElement( 'div' );
-        el.innerHTML = htmlResponse;
-        var merchantHandler = new MerchantHandler(url, el);
+        var merchantHandler = new MerchantHandler(url, htmlResponse);
         return merchantHandler.getMerchantExtractor();
     }
 
