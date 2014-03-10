@@ -54,8 +54,9 @@ var HomeView = function (adapter, homePage, listItem) {
      */
     this.storeProductInfoFromUrl = function(url) {
         //TODO: handle crappy urls
+        url = url.replace("//m.", "//www.");
         $.ajax({
-            url: url.replace("//m.", "//www."),
+            url: url,
             type: 'GET',
             timeout: 8000,
             dataType: 'xml',

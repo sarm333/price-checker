@@ -29,10 +29,10 @@ var AsosExtractor = function(pageDocument) {
         var byRetailer = infoTag.getElementsByTagName("strong")[1].innerHTML.replace("&amp;", "and");
         description += item + " by " + byRetailer + " | ";
 
-        var infoList = infoTag.getElementsByTagName("ul")[0].getElementsByTagName("li");
+        var infoList = infoTag.getElementsByTagName("ul")[0].children;
         for(var info = 0; info < infoList.length; info++) {
-            //TODO: line break not working
-            description += infoList[info].getElementsByTagName("p")[0].innerHTML + ' | ';
+            console.log(infoList[info].firstElementChild);
+            description += infoList[info].firstElementChild.innerHTML + ' | ';
         }
         return description;
     }
