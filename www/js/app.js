@@ -7,8 +7,8 @@
     var productPage = Handlebars.compile($("#product").html());
     var detailsURL = /^#products\//;
     var slider = new PageSlider($('body'));
-    
     var adapter = new MemoryAdapter();
+    var homeView = new HomeView(adapter, homePage, productList);
     
 	adapter.initialize().done(function () {
         getListFromLocal();
@@ -24,7 +24,8 @@
 //    });
     
     document.addEventListener('deviceready', deviceReadyMethod, false);
-    
+    document.addEventListener("pause", appToBackgroundMethod, false);
+
     $(window).on('hashchange', route);
     $(document).on('ready', populateProductList);
 
@@ -44,6 +45,21 @@
         }
         document.addEventListener("pause", onPause, false);
         initPushwoosh();
+        var backgroundMode = window.plugin.BackgroundMode;
+        backgroundMode.enable();
+    }
+
+    function appToBackgroundMethod() {
+        var now                  = new Date().getTime(),
+            _10_seconds_from_now = new Date(now + 10*1000);
+
+        window.plugin.notification.local.add({
+            id:      1, // is converted to a string
+            title:   'Alert yo!',
+            message: 'Local push rocks!',
+            repeat:  'weekly',
+            date:    _10_seconds_from_now
+        });
     }
 
     /**
@@ -52,7 +68,7 @@
     function route() {
 	    var hash = window.location.hash;
 	    if (!hash) {
-            var homeView = new HomeView(adapter, homePage, productList);
+            homeView = new HomeView(adapter, homePage, productList);
 	    	slider.slidePage(homeView.render().el);
 	    	populateProductList();
 	        return homeView;
@@ -100,9 +116,5 @@
             navigator.notification.alert(notification.aps.alert);
             pushNotification.setApplicationIconBadgeNumber(0);
         });
-    }
-
-    function onPause() {
-
     }
 }());

@@ -1,1 +1,64 @@
-{"prepare_queue":{"installed":[],"uninstalled":[]},"config_munge":{"framework":{"AdSupport.framework":{"false":1},"AudioToolbox.framework":{"true":1}},"config.xml":{"/*":{"<feature name=\"PushNotification\"><param name=\"ios-package\" value=\"PushNotification\" /></feature>":1,"<feature name=\"Console\"><param name=\"ios-package\" value=\"CDVLogger\" /></feature>":1,"<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>":1,"<feature name=\"Notification\"><param name=\"ios-package\" value=\"CDVNotification\" /></feature>":1,"<feature name=\"Geolocation\"><param name=\"ios-package\" value=\"CDVLocation\" /></feature>":1}},"undefined":{"undefined":{"<access origin=\"*.pushwoosh.com\" />":1}}},"installed_plugins":{"com.pushwoosh.plugins.pushwoosh":{"PACKAGE_NAME":"com.sarm.tellme"},"org.apache.cordova.console":{"PACKAGE_NAME":"com.sarm.tellme"},"org.apache.cordova.device":{"PACKAGE_NAME":"com.sarm.tellme"},"org.apache.cordova.dialogs":{"PACKAGE_NAME":"com.sarm.tellme"},"org.apache.cordova.geolocation":{"PACKAGE_NAME":"com.sarm.tellme"}},"dependent_plugins":{}}
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "framework": {
+            "AdSupport.framework": {
+                "false": 1
+            },
+            "AudioToolbox.framework": {
+                "true": 1
+            }
+        },
+        "config.xml": {
+            "/*": {
+                "<feature name=\"PushNotification\"><param name=\"ios-package\" value=\"PushNotification\" /></feature>": 1,
+                "<feature name=\"Console\"><param name=\"ios-package\" value=\"CDVLogger\" /></feature>": 1,
+                "<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>": 1,
+                "<feature name=\"Notification\"><param name=\"ios-package\" value=\"CDVNotification\" /></feature>": 1,
+                "<feature name=\"Geolocation\"><param name=\"ios-package\" value=\"CDVLocation\" /></feature>": 1,
+                "<feature name=\"BackgroundMode\"><param name=\"ios-package\" onload=\"true\" value=\"APPBackgroundMode\" /><param name=\"onload\" value=\"true\" /></feature>": 1,
+                "<feature name=\"LocalNotification\"><param name=\"ios-package\" onload=\"true\" value=\"APPLocalNotification\" /><param name=\"onload\" value=\"true\" /></feature>": 1
+            }
+        },
+        "undefined": {
+            "undefined": {
+                "<access origin=\"*.pushwoosh.com\" />": 1
+            }
+        },
+        "*-Info.plist": {
+            "UIBackgroundModes": {
+                "<array><string>location</string></array>": 1
+            },
+            "NSLocationUsageDescription": {
+                "<string>Is required -for iOS 6 and above- to run the app in background!</string>": 1
+            }
+        }
+    },
+    "installed_plugins": {
+        "com.pushwoosh.plugins.pushwoosh": {
+            "PACKAGE_NAME": "com.sarm.tellme"
+        },
+        "org.apache.cordova.console": {
+            "PACKAGE_NAME": "com.sarm.tellme"
+        },
+        "org.apache.cordova.device": {
+            "PACKAGE_NAME": "com.sarm.tellme"
+        },
+        "org.apache.cordova.dialogs": {
+            "PACKAGE_NAME": "com.sarm.tellme"
+        },
+        "org.apache.cordova.geolocation": {
+            "PACKAGE_NAME": "com.sarm.tellme"
+        },
+        "de.appplant.cordova.plugin.background-mode": {
+            "PACKAGE_NAME": "com.sarm.tellme"
+        },
+        "de.appplant.cordova.plugin.local-notification": {
+            "PACKAGE_NAME": "com.sarm.tellme"
+        }
+    },
+    "dependent_plugins": {}
+}
