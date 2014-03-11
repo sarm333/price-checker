@@ -55,7 +55,7 @@
         <a href="#products/{{id}}">
             <img src="{{imageUrl}}">
             <p class="quick-details">{{productName}}</p>
-            <p class="quick-details"><i><b>{{merchant}}</b></i> : {{price}}</p>
+            <p class="quick-details"><i><b>{{merchant}}</b></i> : {{currentPrice}} <strike>{{previousPrice}}</strike></p>
             <span class="chevron"></span><span class="count">{{reports}}</span>
         </a>
         <div class="removal" style="display:none">
@@ -80,7 +80,7 @@
     	<img src="{{imageUrl}}" class="product-image">
         <h1>{{productName}}</h1>
         <h2>{{merchant}}</h2>
-        <h2>{{price}}</h2>
+        <h2>{{currentPrice}} <strike>{{previousPrice}}</strike></h2>
         <div class="topcoat-list__container scroller">
             <ul class="topcoat-list list actions">
             	<div class="product-detail">

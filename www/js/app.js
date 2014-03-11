@@ -9,6 +9,7 @@
     var slider = new PageSlider($('body'));
     var adapter = new MemoryAdapter();
     var homeView = new HomeView(adapter, homePage, productList);
+    var refreshTimer;
     
 	adapter.initialize().done(function () {
         getListFromLocal();
@@ -19,15 +20,12 @@
 	});
 
     /* --------------------------------- Event Registration -------------------------------- */
-//    $('.help-btn').on('click', function() {
-//        alert("Some help here...")
-//    });
-    
-    document.addEventListener('deviceready', deviceReadyMethod, false);
-    document.addEventListener("pause", appToBackgroundMethod, false);
 
     $(window).on('hashchange', route);
     $(document).on('ready', populateProductList);
+    document.addEventListener('deviceready', deviceReadyMethod, false);
+    document.addEventListener("pause", onPause, false);
+    document.addEventListener("resume", onResume, false);
 
     /* ---------------------------------- Local Functions ---------------------------------- */
 
@@ -43,23 +41,20 @@
                 );
             };
         }
-        document.addEventListener("pause", onPause, false);
         initPushwoosh();
         var backgroundMode = window.plugin.BackgroundMode;
         backgroundMode.enable();
     }
 
-    function appToBackgroundMethod() {
-        var now                  = new Date().getTime(),
-            _10_seconds_from_now = new Date(now + 10*1000);
+    function onPause() {
+        var seconds = 1000;
+        //var minutes = 10000;
+        var timeToRefresh = 5 * seconds;
+        refreshTimer = setInterval(homeView.refreshProductList, timeToRefresh);
+    }
 
-        window.plugin.notification.local.add({
-            id:      1, // is converted to a string
-            title:   'Alert yo!',
-            message: 'Local push rocks!',
-            repeat:  'weekly',
-            date:    _10_seconds_from_now
-        });
+    function onResume() {
+        clearInterval(refreshTimer);
     }
 
     /**

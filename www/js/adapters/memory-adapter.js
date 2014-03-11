@@ -54,13 +54,13 @@ var MemoryAdapter = function() {
         this.storeLocally();
     }
 
-    this.addToProductList = function(productName, price, merchantName, imageUrl, productUrl, description) {
+    this.addToProductList = function(productName, currPrice, merchantName, imageUrl, productUrl, description) {
         var id = merchantName + "_" + productName;
         id = id.replace(/ /gi, "_").toLowerCase();
         if(this.isItemAlreadyInList(id)) {
             alert("Item is already in your shopping list!");
         } else {
-            products.push(this.getProductEntry(id, productName, price, merchantName, imageUrl, productUrl, description));
+            products.push(this.getProductEntry(id, productName, currPrice, merchantName, imageUrl, productUrl, description));
         }
         this.storeLocally();
     }
@@ -68,9 +68,20 @@ var MemoryAdapter = function() {
     this.updateExistingProductInfo = function(productId, updatedPrice, updatedImageUrl, updatedDescription) {
         for(var product in products) {
             if(productId == products[product]["id"]) {
-                products[product]["price"] = updatedPrice;
                 products[product]["imageUrl"] = updatedImageUrl;
                 products[product]["description"] = updatedDescription;
+
+                console.log("New Price: " + this.stringToNumber(updatedPrice));
+                console.log("Old Price: " + this.stringToNumber(products[product]["currentPrice"]));
+                if(this.stringToNumber(updatedPrice) != this.stringToNumber(products[product]["currentPrice"])) {
+                    console.log("PRICE CHANGE!");
+                    products[product]["previousPrice"] = products[product]["currentPrice"];
+                    products[product]["currentPrice"] = updatedPrice;
+                    window.plugin.notification.local.add({
+                        title:   'Price Change!',
+                        message: products[product]["productName"] + " is now " + products[product]["currentPrice"] + "!"
+                    });
+                }
 
                 this.storeLocally();
                 return true;
@@ -83,8 +94,16 @@ var MemoryAdapter = function() {
         products = productList;
     }
 
-    this.getProductEntry = function(id, productName, price, storeName, imageUrl, productUrl, description) {
-        return {"id": id, "productName": productName, "price": price, "merchant": storeName, "imageUrl": imageUrl, "productUrl": productUrl, "description": description};
+    this.getProductEntry = function(id, productName, currPrice, storeName, imageUrl, productUrl, description) {
+        return {"id": id, "productName": productName, "currentPrice": currPrice, "previousPrice": "", "merchant": storeName, "imageUrl": imageUrl, "productUrl": productUrl, "description": description};
+    }
+
+    this.getProductEntryWithSalePrice = function(id, productName, currPrice, prevPrice, storeName, imageUrl, productUrl, description) {
+        return {"id": id, "productName": productName, "currentPrice": currPrice, "merchant": storeName, "imageUrl": imageUrl, "productUrl": productUrl, "description": description};
+    }
+
+    this.stringToNumber = function(strNumber) {
+        return Number(strNumber.replace(/[^0-9\.]+/g,""));
     }
 
     /**
