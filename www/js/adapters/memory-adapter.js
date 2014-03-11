@@ -77,10 +77,13 @@ var MemoryAdapter = function() {
                     console.log("PRICE CHANGE!");
                     products[product]["previousPrice"] = products[product]["currentPrice"];
                     products[product]["currentPrice"] = updatedPrice;
-                    window.plugin.notification.local.add({
-                        title:   'Price Change!',
-                        message: products[product]["productName"] + " is now " + products[product]["currentPrice"] + "!"
-                    });
+                    if(isMobile) {
+                        window.plugin.notification.local.add({
+                            title:   'Price Change!',
+                            message: products[product]["productName"] + " is now " + products[product]["currentPrice"] + "!"
+                        });
+                    }
+
                 }
 
                 this.storeLocally();

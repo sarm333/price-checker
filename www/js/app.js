@@ -2,6 +2,7 @@
 (function () {
 
     /* ---------------------------------- Local Variables ---------------------------------- */
+    isMobile = false;
     var homePage = Handlebars.compile($("#home").html());
     var productList = Handlebars.compile($("#product-list").html());
     var productPage = Handlebars.compile($("#product").html());
@@ -17,7 +18,7 @@
         if(!window.location.hash) {
             homeView.refreshProductList();
         }
-	});
+    });
 
     /* --------------------------------- Event Registration -------------------------------- */
 
@@ -41,6 +42,7 @@
                 );
             };
         }
+        isMobile = true;
         initPushwoosh();
         var backgroundMode = window.plugin.BackgroundMode;
         backgroundMode.enable();
