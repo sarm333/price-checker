@@ -22,15 +22,16 @@
 
     /* --------------------------------- Event Registration -------------------------------- */
 
-    $(window).on('hashchange', route);
-    $(document).on('ready', populateProductList);
     document.addEventListener('deviceready', deviceReadyMethod, false);
-    document.addEventListener("pause", onPause, false);
-    document.addEventListener("resume", onResume, false);
+
 
     /* ---------------------------------- Local Functions ---------------------------------- */
 
     function deviceReadyMethod() {
+        $(window).on('hashchange', route);
+        $(document).on('ready', populateProductList);
+        document.addEventListener("pause", onPause, false);
+        document.addEventListener("resume", onResume, false);
         FastClick.attach(document.body);
         if (navigator.notification) { // Override default HTML alert with native dialog
             window.alert = function (message) {
@@ -43,10 +44,18 @@
             };
         }
         isMobile = true;
-        initPushwoosh();
-        var backgroundMode = window.plugin.BackgroundMode;
-        backgroundMode.enable();
+
+        //Geolocation is requested to bring the pop up to allow location services.
+        navigator.geolocation.getCurrentPosition(onSuccess, onError);
+
+        window.plugin.BackgroundMode.enable();
+        //initPushwoosh();
+
     }
+
+    var onSuccess = function(position) {};
+
+    function onError(error) {};
 
     function onPause() {
         var seconds = 1000;
@@ -57,6 +66,7 @@
 
     function onResume() {
         clearInterval(refreshTimer);
+        homeView.refreshProductList();
     }
 
     /**

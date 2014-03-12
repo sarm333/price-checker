@@ -15,12 +15,12 @@
         "config.xml": {
             "/*": {
                 "<feature name=\"PushNotification\"><param name=\"ios-package\" value=\"PushNotification\" /></feature>": 1,
-                "<feature name=\"Console\"><param name=\"ios-package\" value=\"CDVLogger\" /></feature>": 1,
-                "<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>": 1,
-                "<feature name=\"Notification\"><param name=\"ios-package\" value=\"CDVNotification\" /></feature>": 1,
-                "<feature name=\"Geolocation\"><param name=\"ios-package\" value=\"CDVLocation\" /></feature>": 1,
                 "<feature name=\"BackgroundMode\"><param name=\"ios-package\" onload=\"true\" value=\"APPBackgroundMode\" /><param name=\"onload\" value=\"true\" /></feature>": 1,
-                "<feature name=\"LocalNotification\"><param name=\"ios-package\" onload=\"true\" value=\"APPLocalNotification\" /><param name=\"onload\" value=\"true\" /></feature>": 1
+                "<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>": 1,
+                "<feature name=\"LocalNotification\"><param name=\"ios-package\" onload=\"true\" value=\"APPLocalNotification\" /><param name=\"onload\" value=\"true\" /></feature>": 1,
+                "<feature name=\"Console\"><param name=\"ios-package\" value=\"CDVLogger\" /></feature>": 1,
+                "<feature name=\"Notification\"><param name=\"ios-package\" value=\"CDVNotification\" /></feature>": 1,
+                "<feature name=\"Geolocation\"><param name=\"ios-package\" value=\"CDVLocation\" /></feature>": 1
             }
         },
         "undefined": {
@@ -41,10 +41,13 @@
         "com.pushwoosh.plugins.pushwoosh": {
             "PACKAGE_NAME": "com.sarm.tellme"
         },
-        "org.apache.cordova.console": {
+        "de.appplant.cordova.plugin.background-mode": {
             "PACKAGE_NAME": "com.sarm.tellme"
         },
-        "org.apache.cordova.device": {
+        "de.appplant.cordova.plugin.local-notification": {
+            "PACKAGE_NAME": "com.sarm.tellme"
+        },
+        "org.apache.cordova.console": {
             "PACKAGE_NAME": "com.sarm.tellme"
         },
         "org.apache.cordova.dialogs": {
@@ -52,13 +55,11 @@
         },
         "org.apache.cordova.geolocation": {
             "PACKAGE_NAME": "com.sarm.tellme"
-        },
-        "de.appplant.cordova.plugin.background-mode": {
-            "PACKAGE_NAME": "com.sarm.tellme"
-        },
-        "de.appplant.cordova.plugin.local-notification": {
-            "PACKAGE_NAME": "com.sarm.tellme"
         }
     },
-    "dependent_plugins": {}
+    "dependent_plugins": {
+        "org.apache.cordova.device": {
+            "PACKAGE_NAME": "com.sarm.tellme"
+        }
+    }
 }
