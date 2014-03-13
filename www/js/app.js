@@ -11,6 +11,8 @@
     var adapter = new MemoryAdapter();
     var homeView = new HomeView(adapter, homePage, productList);
     var refreshTimer;
+    var seconds = 1000;
+    var timeToRefresh = 10 * seconds;
     
 	adapter.initialize().done(function () {
         getListFromLocal();
@@ -48,7 +50,7 @@
         //Geolocation is requested to bring the pop up to allow location services.
         navigator.geolocation.getCurrentPosition(onSuccess, onError);
 
-        window.plugin.BackgroundMode.enable();
+        plugin.BackgroundMode.enable();
         //initPushwoosh();
 
     }
@@ -58,9 +60,6 @@
     function onError(error) {};
 
     function onPause() {
-        var seconds = 1000;
-        //var minutes = 10000;
-        var timeToRefresh = 5 * seconds;
         refreshTimer = setInterval(homeView.refreshProductList, timeToRefresh);
     }
 
