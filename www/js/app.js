@@ -31,6 +31,9 @@
 
     /* ---------------------------------- Local Functions ---------------------------------- */
 
+    /**
+     * Only executed on mobile devices.
+     */
     function deviceReadyMethod() {
         document.addEventListener("pause", onPause, false);
         document.addEventListener("resume", onResume, false);
@@ -88,10 +91,16 @@
 	    }
 	}
 
+    /**
+     * Places the products from the product list into the front end gui.
+     */
 	function populateProductList() {
 		$('.product-list').html(productList(adapter.getProducts()));
 	}
 
+    /**
+     * Retrieves the list of saved products from the local storage.
+     */
     function getListFromLocal() {
         var productList = localStorage.getItem("productList");
         if(productList != null) {
