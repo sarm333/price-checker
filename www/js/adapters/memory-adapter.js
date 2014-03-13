@@ -60,7 +60,17 @@ var MemoryAdapter = function() {
         if(this.isItemAlreadyInList(id)) {
             alert("Item is already in your shopping list!");
         } else {
-            products.push(this.getProductEntry(id, productName, currPrice, merchantName, imageUrl, productUrl, description));
+            var currentPrice;
+            var previousPrice;
+            console.log(currPrice);
+            if(currPrice.indexOf("|") != -1) {
+                var split = currPrice.split("|");
+                currentPrice = split[0];
+                previousPrice = split[1];
+            } else {
+                currentPrice = currPrice;
+            }
+            products.push(this.getProductEntryWithSalePrice(id, productName, currentPrice, previousPrice, merchantName, imageUrl, productUrl, description));
         }
         this.storeLocally();
     }
@@ -71,10 +81,13 @@ var MemoryAdapter = function() {
                 products[product]["imageUrl"] = updatedImageUrl;
                 products[product]["description"] = updatedDescription;
 
+                if(updatedPrice.indexOf("|") != -1) {
+                    updatedPrice = updatedPrice.split("|")[0];
+                }
+
                 console.log("New Price: " + this.stringToNumber(updatedPrice));
                 console.log("Old Price: " + this.stringToNumber(products[product]["currentPrice"]));
                 if(this.stringToNumber(updatedPrice) != this.stringToNumber(products[product]["currentPrice"])) {
-                    console.log("PRICE CHANGE!");
                     products[product]["previousPrice"] = products[product]["currentPrice"];
                     products[product]["currentPrice"] = updatedPrice;
                     if(isMobile) {
@@ -102,7 +115,7 @@ var MemoryAdapter = function() {
     }
 
     this.getProductEntryWithSalePrice = function(id, productName, currPrice, prevPrice, storeName, imageUrl, productUrl, description) {
-        return {"id": id, "productName": productName, "currentPrice": currPrice, "merchant": storeName, "imageUrl": imageUrl, "productUrl": productUrl, "description": description};
+        return {"id": id, "productName": productName, "currentPrice": currPrice, "previousPrice": prevPrice, "merchant": storeName, "imageUrl": imageUrl, "productUrl": productUrl, "description": description};
     }
 
     this.stringToNumber = function(strNumber) {

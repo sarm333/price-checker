@@ -23,13 +23,13 @@
     /* --------------------------------- Event Registration -------------------------------- */
 
     document.addEventListener('deviceready', deviceReadyMethod, false);
+    $(window).on('hashchange', route);
+    $(document).on('ready', populateProductList);
 
 
     /* ---------------------------------- Local Functions ---------------------------------- */
 
     function deviceReadyMethod() {
-        $(window).on('hashchange', route);
-        $(document).on('ready', populateProductList);
         document.addEventListener("pause", onPause, false);
         document.addEventListener("resume", onResume, false);
         FastClick.attach(document.body);
@@ -53,7 +53,7 @@
 
     }
 
-    var onSuccess = function(position) {};
+    function onSuccess(position) {};
 
     function onError(error) {};
 

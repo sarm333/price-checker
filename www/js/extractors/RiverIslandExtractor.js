@@ -8,9 +8,10 @@ var RiverIslandExtractor = function(pageDocument) {
 	
 	this.getProductPrice = function() {
 		var priceNode = productDetailsTag.getElementsByClassName("price")[0];
-        if(priceNode.length == 5) {
-            //TODO: Handle sale items
-            return priceNode.getElementsByTagName("div")[0].innerHTML;
+        if(priceNode.childNodes.length > 5) {
+            var salePrice = priceNode.getElementsByClassName("sale")[0].textContent;
+            var originalPrice = priceNode.getElementsByClassName("was-price")[0].textContent;
+            return salePrice.replace("Now", "") + '|' + originalPrice.replace("Was", "");
         } else {
             return priceNode.getElementsByTagName("span")[0].innerHTML;
         }
