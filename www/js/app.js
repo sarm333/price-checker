@@ -10,13 +10,11 @@
     var slider = new PageSlider($('body'));
     var adapter = new MemoryAdapter();
     var homeView = new HomeView(adapter, homePage, productList);
-    var refreshTimer;
-    var seconds = 1000;
-    var timeToRefresh = 10 * seconds;
-    
-	adapter.initialize().done(function () {
+    var Fetcher;
+
+    adapter.initialize().done(function () {
         getListFromLocal();
-	    var homeView = route();
+        var homeView = route();
         if(!window.location.hash) {
             homeView.refreshProductList();
         }
@@ -49,54 +47,50 @@
             };
         }
         isMobile = true;
-
-        //Geolocation is requested to bring the pop up to allow location services.
-        navigator.geolocation.getCurrentPosition(onSuccess, onError);
-
-        plugin.BackgroundMode.enable();
         //initPushwoosh();
-
+        Fetcher = window.plugins.backgroundFetch;
+        Fetcher.configure(fetchCallback);
     }
 
-    function onSuccess(position) {};
-
-    function onError(error) {};
+    function fetchCallback() {
+        homeView.refreshProductList();
+        Fetcher.finish();   // <-- N.B. You MUST called #finish so that native-side can signal completion of the background-thread to the os.
+    }
 
     function onPause() {
-        refreshTimer = setInterval(homeView.refreshProductList, timeToRefresh);
+        console.log('Pausing app');
     }
 
     function onResume() {
-        clearInterval(refreshTimer);
-        homeView.refreshProductList();
+        console.log('Resuming app');
     }
 
     /**
      * Transitions from the HomeView to the ProductView or vice versa
      */
     function route() {
-	    var hash = window.location.hash;
-	    if (!hash) {
+        var hash = window.location.hash;
+        if (!hash) {
             homeView = new HomeView(adapter, homePage, productList);
-	    	slider.slidePage(homeView.render().el);
-	    	populateProductList();
-	        return homeView;
-	    }
-	    var match = hash.match(detailsURL);
+            slider.slidePage(homeView.render().el);
+            populateProductList();
+            return homeView;
+        }
+        var match = hash.match(detailsURL);
         var id = hash.replace("#products/", "");
-	    if (match) {
-	        adapter.findById(id).done(function(productListItem) {
-	        	slider.slidePage(new ProductView(adapter, productPage, productListItem).render().el);
-	        });
-	    }
-	}
+        if (match) {
+            adapter.findById(id).done(function(productListItem) {
+                slider.slidePage(new ProductView(adapter, productPage, productListItem).render().el);
+            });
+        }
+    }
 
     /**
      * Places the products from the product list into the front end gui.
      */
-	function populateProductList() {
-		$('.product-list').html(productList(adapter.getProducts()));
-	}
+    function populateProductList() {
+        $('.product-list').html(productList(adapter.getProducts()));
+    }
 
     /**
      * Retrieves the list of saved products from the local storage.
