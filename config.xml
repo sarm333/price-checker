@@ -15,4 +15,13 @@
     <feature name="PushNotification">
         <param name="ios-package" value="PushNotification" />
     </feature>
+    <feature name="Notification">
+        <param name="ios-package" value="CDVNotification" />
+    </feature>
+    <feature name="LocalNotification">
+        <param name="ios-package" value="LocalNotification" />
+    </feature>
+    <feature name="BackgroundFetch">
+        <param name="ios-package" value="CDVBackgroundFetch" />
+    </feature>
 </widget>
