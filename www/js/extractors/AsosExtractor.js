@@ -3,9 +3,13 @@ var AsosExtractor = function(pageDocument) {
 	var MERCHANT_NAME = "Asos";
 	
 	this.getProductName = function() {
-        var productName = pageDocument.querySelector('span[id="ctl00_ContentMainPage_ctlSeparateProduct_lblProductTitle"]').innerHTML.split(">")[1].split("<")[0];
-
-		return this.clearWhiteSpacesAndLineBreaks(productName);
+        var productName = pageDocument.querySelector('span[id="ctl00_ContentMainPage_ctlSeparateProduct_lblProductTitle"]');
+        if(productName != null) {
+            return this.clearWhiteSpacesAndLineBreaks(productName.innerHTML.split(">")[1].split("<")[0])
+        }
+        productName = pageDocument.querySelector('span[id="ctl00_ContentMainPage_ctlSeparate1_lblProductTitle"]');
+        console.log(productName);
+        return productName.innerHTML.replace(/\s*\<.*?\>\s*/g, '');
 	};
 
     this.getProductCode = function() {
@@ -14,7 +18,20 @@ var AsosExtractor = function(pageDocument) {
 	
 	this.getProductPrice = function() {
         //TODO: Handle sale
-		return pageDocument.querySelector('span[id="ctl00_ContentMainPage_ctlSeparateProduct_lblProductPrice"]').innerHTML;
+        var currentPrice = pageDocument.querySelector('span[id="ctl00_ContentMainPage_ctlSeparateProduct_lblProductPrice"]');
+        if(currentPrice != null) {
+            var previousPrice = pageDocument.querySelector('span[id="ctl00_ContentMainPage_ctlSeparateProduct_lblProductPreviousPrice"]');
+            if(previousPrice != null){
+                return previousPrice.innerHTML.replace("NOW ", "") + "|" + currentPrice.innerHTML;
+            }
+            return currentPrice.innerHTML;
+        }
+        currentPrice = pageDocument.querySelector('span[id="ctl00_ContentMainPage_ctlSeparate1_lblProductPrice"]');
+        var previousPrice = pageDocument.querySelector('span[id="ctl00_ContentMainPage_ctlSeparate1_lblProductPreviousPrice"]');
+        if(previousPrice != null) {
+            return previousPrice.innerHTML.replace("NOW ", "") + "|" + currentPrice.innerHTML;
+        }
+		return currentPrice.innerHTML;
 	}
 
     this.getProductImageThumb = function() {
@@ -24,6 +41,9 @@ var AsosExtractor = function(pageDocument) {
     this.getProductDescription = function() {
         var description = "";
         var infoTag = pageDocument.querySelectorAll(".single-entry")[0];
+        if(infoTag == null) {
+            return "No product description";
+        }
 
         var item = infoTag.getElementsByTagName("strong")[0].innerHTML;
         var byRetailer = infoTag.getElementsByTagName("strong")[1].innerHTML.replace("&amp;", "and");
@@ -31,7 +51,6 @@ var AsosExtractor = function(pageDocument) {
 
         var infoList = infoTag.getElementsByTagName("ul")[0].children;
         for(var info = 0; info < infoList.length; info++) {
-            console.log(infoList[info].firstElementChild);
             description += infoList[info].firstElementChild.innerHTML + ' | ';
         }
         return description;
@@ -54,7 +73,6 @@ var AsosExtractor = function(pageDocument) {
         }
         sentence = newString.substring(0, newString.length - 1);
         sentence = sentence.replace("\n", "");
-        console.log(sentence);
         return sentence;
     }
 }

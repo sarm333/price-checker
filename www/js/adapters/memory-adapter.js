@@ -62,7 +62,6 @@ var MemoryAdapter = function() {
         } else {
             var currentPrice;
             var previousPrice;
-            console.log(currPrice);
             if(currPrice.indexOf("|") != -1) {
                 var split = currPrice.split("|");
                 currentPrice = split[0];
