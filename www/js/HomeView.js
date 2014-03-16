@@ -63,17 +63,21 @@ var HomeView = function (adapter, homePage, listItem) {
             success: function(data) {
                 var response = data.responseText;
                 //Get correct extractor
+                console.log(response);
                 var extractor = homeView.getExtractor(response, url);
                 /*console.log(extractor.getProductName());
                 console.log(extractor.getProductPrice());
                 console.log(extractor.getProductImageThumb());
                 console.log(extractor.getProductDescription());*/
+                if(extractor == false) {
+                    alert("Not a supported URL");
+                } else {
+                    //store in list within mem adapter
+                    adapter.addToProductList(extractor.getProductName(), extractor.getProductPrice(), extractor.getMerchantName(), extractor.getProductImageThumb(), url, extractor.getProductDescription());
 
-                //store in list within mem adapter
-                adapter.addToProductList(extractor.getProductName(), extractor.getProductPrice(), extractor.getMerchantName(), extractor.getProductImageThumb(), url, extractor.getProductDescription());
-
-                homeView.populateProductList(listItem);
-                document.getElementsByClassName("edit-button")[0].innerHTML = "Edit";       //set the Edit button to 'edit' if its still in removal mode.
+                    homeView.populateProductList(listItem);
+                    document.getElementsByClassName("edit-button")[0].innerHTML = "Edit";       //set the Edit button to 'edit' if its still in removal mode.
+                }
             }
         });
     }

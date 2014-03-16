@@ -18,7 +18,9 @@ var MerchantHandler = function(url, htmlResponse) {
             return new AsosExtractor(el);
         }
         else if(url.indexOf(".newlook") != -1) {
-             return new NewLookExtractor(el);
+            return new NewLookExtractor(el);
+        } else {
+            return false;
         }
     }
 }
