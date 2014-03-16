@@ -93,8 +93,8 @@ var MemoryAdapter = function() {
                     if(isMobile) {
                         window.plugin.notification.local.add({
                             id: productId,
-                            title:   'Price Change!',
-                            message: products[product]["productName"] + " is now " + products[product]["currentPrice"] + "!"
+                            title:   products[product]["productName"],
+                            message: "is now " + products[product]["currentPrice"] + " from " + products[product]["previousPrice"]
                         });
                     }
 
