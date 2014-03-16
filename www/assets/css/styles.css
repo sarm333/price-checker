@@ -19,27 +19,25 @@
 }
 
 .top-nav-bar {
-
+    background-color: #FAFAFA;
 }
 
 .add-button {
-	display: inline-block;
 	float: right;
-    color: #1e7dc8;
+    width: 70px;
+    height : 49px;
+    padding:10px 10px 12px 12px;
 }
 
 .edit-button {
     display: inline-block;
-    color: #1e7dc8;
 }
 
 .refresh-button {
     display: inline-block;
-    color: #1e7dc8;
 }
 
 .back-button {
-    color: #1e7dc8;
     bottom:10px;
 }
 
@@ -63,6 +61,8 @@ a {
 .list {
     list-style-type: none;
     border-top: none !important;
+    background-color: #FAFAFA;
+    height: 100%;
 }
 
 .list > li {
@@ -81,6 +81,7 @@ a {
     display: block;
     height: 57px;
     padding: 4px;
+    background-color: #FAFAFA;
 }
 
 

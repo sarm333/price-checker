@@ -6,6 +6,9 @@
 	<link href="assets/topcoat/css/topcoat-mobile-light.css" rel="stylesheet">
 	<link href="assets/css/styles.css" rel="stylesheet">
 	<link href="assets/css/pageslider.css" rel="stylesheet">
+    <link href="assets/css/base.css" rel="stylesheet">
+    <link href="assets/css/layout.css" rel="stylesheet">
+    <link href="assets/css/skeleton.css" rel="stylesheet">
 </head>
 <body>
 
@@ -24,29 +27,30 @@
     <div class="top-bar">
     	<input type="text" placeholder="url" onfocus="this.value=''" class="topcoat-text-input url-input">
         <span id="add-button">
-			<button class="topcoat-button add-button" >Add</button>
+			<button class="add-button" >Add</button>
 		</span>
     </div>
     <div class="topcoat-list__container scroller">
     	<ul class="topcoat-list list product-list"></ul>
 	</div>
-	<div class="topcoat-tab-bar bottom-bar full">
-    <label class="topcoat-tab-bar__item">
-        <input type="radio" name="topcoat">
-        <button class="topcoat-tab-bar__button full active">
-            <div class="icomatic">Shopping list</div>
-            <div class="icon-label">Shopping</div>
-        </button>
-    </label>
 
-    <label class="topcoat-tab-bar__item">
-        <input type="radio" name="topcoat">
-        <button class="topcoat-tab-bar__button full">
-            <div class="icomatic">Browser</div>
-            <div class="icon-label">Browser</div>
-        </button>
-    </label>
-</div>
+	<div class="topcoat-tab-bar bottom-bar full">
+        <label class="topcoat-tab-bar__item">
+            <input type="radio" name="topcoat">
+            <button class="topcoat-tab-bar__button full active bottom-bar-button">
+                <div class="icomatic">Shopping list</div>
+                <div class="icon-label">Shopping</div>
+            </button>
+        </label>
+
+        <label class="topcoat-tab-bar__item">
+            <input type="radio" name="topcoat">
+            <button class="topcoat-tab-bar__button full bottom-bar-button">
+                <div class="icomatic">Browser</div>
+                <div class="icon-label">Browser</div>
+            </button>
+        </label>
+    </div>
 </script>
 
 <script id="product-list">
