@@ -15,12 +15,11 @@
         "config.xml": {
             "/*": {
                 "<feature name=\"PushNotification\"><param name=\"ios-package\" value=\"PushNotification\" /></feature>": 1,
-                "<feature name=\"BackgroundMode\"><param name=\"ios-package\" onload=\"true\" value=\"APPBackgroundMode\" /><param name=\"onload\" value=\"true\" /></feature>": 1,
                 "<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>": 1,
                 "<feature name=\"LocalNotification\"><param name=\"ios-package\" onload=\"true\" value=\"APPLocalNotification\" /><param name=\"onload\" value=\"true\" /></feature>": 1,
                 "<feature name=\"Console\"><param name=\"ios-package\" value=\"CDVLogger\" /></feature>": 1,
                 "<feature name=\"Notification\"><param name=\"ios-package\" value=\"CDVNotification\" /></feature>": 1,
-                "<feature name=\"Geolocation\"><param name=\"ios-package\" value=\"CDVLocation\" /></feature>": 1
+                "<feature name=\"BackgroundFetch\"><param name=\"ios-package\" value=\"CDVBackgroundFetch\" /><param name=\"onload\" value=\"true\" /></feature>": 1
             }
         },
         "undefined": {
@@ -30,10 +29,7 @@
         },
         "*-Info.plist": {
             "UIBackgroundModes": {
-                "<array><string>location</string></array>": 1
-            },
-            "NSLocationUsageDescription": {
-                "<string>Is required -for iOS 6 and above- to run the app in background!</string>": 1
+                "<array><string>fetch</string></array>": 1
             }
         }
     },
@@ -41,7 +37,7 @@
         "com.pushwoosh.plugins.pushwoosh": {
             "PACKAGE_NAME": "com.sarm.tellme"
         },
-        "de.appplant.cordova.plugin.background-mode": {
+        "com.red_folder.phonegap.plugin.backgroundservice": {
             "PACKAGE_NAME": "com.sarm.tellme"
         },
         "de.appplant.cordova.plugin.local-notification": {
@@ -53,7 +49,7 @@
         "org.apache.cordova.dialogs": {
             "PACKAGE_NAME": "com.sarm.tellme"
         },
-        "org.apache.cordova.geolocation": {
+        "org.transistorsoft.cordova.plugin.background.fetch": {
             "PACKAGE_NAME": "com.sarm.tellme"
         }
     },
