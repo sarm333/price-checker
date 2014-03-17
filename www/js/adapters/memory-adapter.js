@@ -74,11 +74,10 @@ var MemoryAdapter = function() {
         this.storeLocally();
     }
 
-    this.updateExistingProductInfo = function(productId, updatedPrice, updatedImageUrl, updatedDescription) {
+    this.updateExistingProductInfo = function(productId, updatedPrice, updatedImageUrl) {
         for(var product in products) {
             if(productId == products[product]["id"]) {
                 products[product]["imageUrl"] = updatedImageUrl;
-                products[product]["description"] = updatedDescription;
 
                 if(updatedPrice.indexOf("|") != -1) {
                     updatedPrice = updatedPrice.split("|")[0];

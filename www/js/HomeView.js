@@ -101,7 +101,7 @@ var HomeView = function (adapter, homePage, listItem) {
                 console.log(newProduct.getProductDescription());
                 console.log();*/
                 //Store new details
-                adapter.updateExistingProductInfo(product["id"], newProduct.getProductPrice(), newProduct.getProductImageThumb(), newProduct.getProductDescription());
+                adapter.updateExistingProductInfo(product["id"], newProduct.getProductPrice(), newProduct.getProductImageThumb());
                 homeView.populateProductList(listItem);
                 document.getElementsByClassName("edit-button")[0].innerHTML = "Edit";
             }

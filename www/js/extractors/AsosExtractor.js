@@ -8,8 +8,7 @@ var AsosExtractor = function(pageDocument) {
             return this.clearWhiteSpacesAndLineBreaks(productName.innerHTML.split(">")[1].split("<")[0])
         }
         productName = pageDocument.querySelector('span[id="ctl00_ContentMainPage_ctlSeparate1_lblProductTitle"]');
-        console.log(productName);
-        return productName.innerHTML.replace(/\s*\<.*?\>\s*/g, '');
+        return this.removeTags(productName.innerHTML);
 	};
 
     this.getProductCode = function() {
@@ -21,17 +20,20 @@ var AsosExtractor = function(pageDocument) {
         var currentPrice = pageDocument.querySelector('span[id="ctl00_ContentMainPage_ctlSeparateProduct_lblProductPrice"]');
         if(currentPrice != null) {
             var previousPrice = pageDocument.querySelector('span[id="ctl00_ContentMainPage_ctlSeparateProduct_lblProductPreviousPrice"]');
-            if(previousPrice != null){
+            if(previousPrice != null && previousPrice.innerHTML.indexOf('<span') == -1){
                 return previousPrice.innerHTML.replace("NOW ", "") + "|" + currentPrice.innerHTML;
+            } else if(previousPrice != null && previousPrice.innerHTML.indexOf('<span') != -1) {
+                previousPrice =  pageDocument.querySelector('span[id=ctl00_ContentMainPage_ctlSeparateProduct_lblRRP]');
+                return currentPrice.innerHTML + "|" + this.removeTags(previousPrice.innerHTML.replace("RRP ", ""));
             }
-            return currentPrice.innerHTML;
+            return this.removeTags(currentPrice.innerHTML);
         }
         currentPrice = pageDocument.querySelector('span[id="ctl00_ContentMainPage_ctlSeparate1_lblProductPrice"]');
         var previousPrice = pageDocument.querySelector('span[id="ctl00_ContentMainPage_ctlSeparate1_lblProductPreviousPrice"]');
         if(previousPrice != null) {
             return previousPrice.innerHTML.replace("NOW ", "") + "|" + currentPrice.innerHTML;
         }
-		return currentPrice.innerHTML;
+		return this.removeTags(currentPrice.innerHTML);
 	}
 
     this.getProductImageThumb = function() {
@@ -45,15 +47,7 @@ var AsosExtractor = function(pageDocument) {
             return "No product description";
         }
 
-        var item = infoTag.getElementsByTagName("strong")[0].innerHTML;
-        var byRetailer = infoTag.getElementsByTagName("strong")[1].innerHTML.replace("&amp;", "and");
-        description += item + " by " + byRetailer + " | ";
-
-        var infoList = infoTag.getElementsByTagName("ul")[0].children;
-        for(var info = 0; info < infoList.length; info++) {
-            description += infoList[info].firstElementChild.innerHTML + ' | ';
-        }
-        return description;
+        return this.clearWhiteSpacesAndLineBreaks(infoTag.textContent);
     }
 
     this.getMerchantName = function() {
@@ -74,5 +68,9 @@ var AsosExtractor = function(pageDocument) {
         sentence = newString.substring(0, newString.length - 1);
         sentence = sentence.replace("\n", "");
         return sentence;
+    }
+
+    this.removeTags = function(htmlString) {
+        return htmlString.replace(/\s*\<.*?\>\s*/g, '');
     }
 }
