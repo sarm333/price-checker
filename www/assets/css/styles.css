@@ -1,6 +1,6 @@
 .back-button {
-    position: relative;
-    top: 10px;
+    top: 6px;
+    bottom:10px;
 }
 
 .topcoat-icon--back {
@@ -23,22 +23,38 @@
 }
 
 .add-button {
-	float: right;
-    width: 70px;
-    height : 49px;
-    padding:10px 10px 12px 12px;
+    float: right;
+}
+
+.icon-add-button {
+    background: url("../topcoat/img/add-button.png") no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
 }
 
 .edit-button {
-    display: inline-block;
+    top: 6px;
+    bottom:10px;
+}
+
+.icon-edit-button {
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
 }
 
 .refresh-button {
-    display: inline-block;
+    top: 6px;
+    bottom:10px;
 }
 
-.back-button {
-    bottom:10px;
+.icon-refresh-button {
+    background: url("../topcoat/img/reload-icon.png") no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    position: relative;
 }
 
 #remove-button {
@@ -157,7 +173,7 @@ a {
 }
 
 .actions li p:nth-of-type(1) {
-    color:  #5DC1FF;
+    color: #04dc97;
     font-size: 0.9em;
     font-weight: lighter;
 }
@@ -166,48 +182,8 @@ a {
     color: inherit;
 }
 
-.icon-call {
-    background: transparent url(../topcoat/img/call.svg);
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-}
-
-.icon-sms {
-    background: transparent url(../topcoat/img/chat.svg);
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-}
-
-.icon-mail {
-    background: transparent url(../topcoat/img/email.svg);
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-}
-
-.icon-manager {
-    background: transparent url(../topcoat/img/next.svg);
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-}
-
-.icon-reports {
-    background: transparent url(../topcoat/img/next.svg);
-    background-repeat: no-repeat;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-}
-
 .chevron {
-    background: transparent url(../topcoat/img/next_blue.svg);
+    background: transparent url(../topcoat/img/next.svg);
     background-repeat: no-repeat;
     background-size: contain;
     width: 20px;
@@ -252,3 +228,15 @@ a {
 	height: auto;
 }
 
+.product-page-top-bar {
+    background-color: #FAFAFA;
+}
+
+.buy-now-button {
+    background-color: #4efbc5;
+}
+
+
+.topcoat-text-input:focus {
+    border: 1px solid #4efbc5;
+}

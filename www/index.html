@@ -15,26 +15,30 @@
 <script id="home">
     <div class="topcoat-navigation-bar top-nav-bar">
         <div class="topcoat-navigation-bar__item left quarter">
-            <Button class="refresh-button">Refresh</Button>
+            <span class="topcoat-icon-button--quiet refresh-button">
+                <span class="topcoat-icon icon-refresh-button"></span>
+            </span>
         </div>
         <div class="topcoat-navigation-bar__item center half">
             <h1 class="topcoat-navigation-bar__title">Tell Me!</h1>
         </div>
         <div class="topcoat-navigation-bar__item right quarter">
-            <Button class="edit-button">Edit</Button>
+            <span class="topcoat-icon-button--quiet edit-button">
+                <span class="topcoat-icon icon-edit-button"></span>
+            </span>
         </div>
     </div>
     <div class="top-bar">
     	<input type="text" placeholder="url" onfocus="this.value=''" class="topcoat-text-input url-input">
-        <span id="add-button">
-			<button class="add-button" >Add</button>
-		</span>
+        <span class="topcoat-icon-button--quiet add-button">
+            <span class="topcoat-icon icon-add-button"></span>
+        </span>
     </div>
     <div class="topcoat-list__container scroller">
     	<ul class="topcoat-list list product-list"></ul>
 	</div>
 
-	<div class="topcoat-tab-bar bottom-bar full">
+	<!--div class="topcoat-tab-bar bottom-bar full">
         <label class="topcoat-tab-bar__item">
             <input type="radio" name="topcoat">
             <button class="topcoat-tab-bar__button full active bottom-bar-button">
@@ -50,7 +54,7 @@
                 <div class="icon-label">Browser</div>
             </button>
         </label>
-    </div>
+    </div-->
 </script>
 
 <script id="product-list">
@@ -62,36 +66,33 @@
             <p class="quick-details"><i><b>{{merchant}}</b></i> : {{currentPrice}} <strike>{{previousPrice}}</strike></p>
             <span class="chevron"></span><span class="count">{{reports}}</span>
         </a>
-        <div class="removal" style="display:none">
-            <Button class="remove-button">Remove</Button>
-        </div>
+        <span class="removal" style="display:none">
+                <Button class="remove-button">Remove</Button>
+        </span>
     </li>
     {{/.}}
 </script>
 
 <script id="product">
-    <div class="topcoat-navigation-bar">
+    <div class="topcoat-navigation-bar product-page-top-bar">
         <div class="topcoat-navigation-bar__item left quarter">
             <a class="topcoat-icon-button--quiet back-button" href="#">
                 <span class="topcoat-icon topcoat-icon--back"></span>
             </a>
         </div>
         <div class="topcoat-navigation-bar__item center half">
-            <h1 class="topcoat-navigation-bar__title">Product</h1>
+            <h1 class="topcoat-navigation-bar__title">{{productName}}</h1>
         </div>
     </div>
     <div class="details">
     	<img src="{{imageUrl}}" class="product-image">
-        <h1>{{productName}}</h1>
-        <h2>{{merchant}}</h2>
+        <h1>{{merchant}}</h1>
         <h2>{{currentPrice}} <strike>{{previousPrice}}</strike></h2>
+        <Button class="buy-now-button" onclick="window.location.href='{{productUrl}}'">Buy Now</Button>
         <div class="topcoat-list__container scroller">
             <ul class="topcoat-list list actions">
             	<div class="product-detail">
-            		<li class="topcoat-list__item"><a href="{{productUrl}}"><p>URL</p><p>{{productUrl}}</p></a></li>
-            	</div>
-            	<div class="product-detail">
-            	<li class="topcoat-list__item"><p>Product Description</p><p>{{description}}</p></li>
+            	    <li class="topcoat-list__item"><p>Product Description</p><p>{{description}}</p></li>
             	</div>
             </ul>
         </div>

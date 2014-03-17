@@ -47,7 +47,7 @@
             };
         }
         isMobile = true;
-        //initPushwoosh();
+        initPushwoosh();
         Fetcher = window.plugins.backgroundFetch;
         Fetcher.configure(fetchCallback);
     }
@@ -74,6 +74,7 @@
             homeView = new HomeView(adapter, homePage, productList);
             slider.slidePage(homeView.render().el);
             populateProductList();
+            document.getElementsByClassName("edit-button")[0].innerHTML = "Edit";
             return homeView;
         }
         var match = hash.match(detailsURL);
