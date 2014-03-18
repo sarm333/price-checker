@@ -15,12 +15,12 @@
 <script id="home">
     <div class="topcoat-navigation-bar top-nav-bar">
         <div class="topcoat-navigation-bar__item left quarter">
-            <span class="topcoat-icon-button--quiet refresh-button">
+            <span class="topcoat-icon-button--quiet header-button">
                 <span class="topcoat-icon icon-refresh-button"></span>
             </span>
         </div>
         <div class="topcoat-navigation-bar__item center half">
-            <h1 class="topcoat-navigation-bar__title">Tell Me!</h1>
+            <span class="topcoat-icon header-icon"></span>
         </div>
         <div class="topcoat-navigation-bar__item right quarter">
             <span class="topcoat-icon-button--quiet edit-button">
@@ -76,21 +76,24 @@
 <script id="product">
     <div class="topcoat-navigation-bar product-page-top-bar">
         <div class="topcoat-navigation-bar__item left quarter">
-            <a class="topcoat-icon-button--quiet back-button" href="#">
+            <a class="topcoat-icon-button--quiet header-button" href="#">
                 <span class="topcoat-icon topcoat-icon--back"></span>
             </a>
         </div>
         <div class="topcoat-navigation-bar__item center half">
-            <h1 class="topcoat-navigation-bar__title">{{productName}}</h1>
+            <h1 class="topcoat-navigation-bar__title"></h1>
         </div>
     </div>
     <div class="details">
     	<img src="{{imageUrl}}" class="product-image">
-        <h1>{{merchant}}</h1>
+        <h1>{{productName}}</h1>
+        <h2>{{merchant}}</h2>
         <h2>{{currentPrice}} <strike>{{previousPrice}}</strike></h2>
-        <Button class="buy-now-button" onclick="window.location.href='{{productUrl}}'">Buy Now</Button>
         <div class="topcoat-list__container scroller">
             <ul class="topcoat-list list actions">
+                <div>
+                    <li class="topcoat-list__item"><Button class="buy-now-button" onclick="window.location.href='{{productUrl}}'">Buy Now</Button></li>
+                </div>
             	<div class="product-detail">
             	    <li class="topcoat-list__item"><p>Product Description</p><p>{{description}}</p></li>
             	</div>
