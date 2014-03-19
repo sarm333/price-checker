@@ -10,6 +10,9 @@
             },
             "AudioToolbox.framework": {
                 "true": 1
+            },
+            "CoreGraphics.framework": {
+                "false": 1
             }
         },
         "config.xml": {
@@ -19,7 +22,8 @@
                 "<feature name=\"LocalNotification\"><param name=\"ios-package\" onload=\"true\" value=\"APPLocalNotification\" /><param name=\"onload\" value=\"true\" /></feature>": 1,
                 "<feature name=\"Console\"><param name=\"ios-package\" value=\"CDVLogger\" /></feature>": 1,
                 "<feature name=\"Notification\"><param name=\"ios-package\" value=\"CDVNotification\" /></feature>": 1,
-                "<feature name=\"BackgroundFetch\"><param name=\"ios-package\" value=\"CDVBackgroundFetch\" /><param name=\"onload\" value=\"true\" /></feature>": 1
+                "<feature name=\"BackgroundFetch\"><param name=\"ios-package\" value=\"CDVBackgroundFetch\" /><param name=\"onload\" value=\"true\" /></feature>": 1,
+                "<feature name=\"InAppBrowser\"><param name=\"ios-package\" value=\"CDVInAppBrowser\" /></feature>": 1
             }
         },
         "undefined": {
@@ -50,6 +54,9 @@
             "PACKAGE_NAME": "com.sarm.tellme"
         },
         "org.transistorsoft.cordova.plugin.background.fetch": {
+            "PACKAGE_NAME": "com.sarm.tellme"
+        },
+        "org.apache.cordova.inappbrowser": {
             "PACKAGE_NAME": "com.sarm.tellme"
         }
     },

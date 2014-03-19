@@ -24,4 +24,7 @@
     <feature name="BackgroundFetch">
         <param name="ios-package" value="CDVBackgroundFetch" />
     </feature>
+    <feature name="InAppBrowser">
+    	<param name="ios-package" value="CDVInAppBrowser" />
+	</feature>
 </widget>
