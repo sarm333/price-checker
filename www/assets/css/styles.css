@@ -10,7 +10,7 @@
 }
 
 .top-bar > input {
-    width: 70%;
+    width: 80%;
 }
 
 .top-nav-bar {
@@ -255,14 +255,9 @@ a {
 	height: auto;
 }
 
-.product-page-top-bar {
-    background-color: #FAFAFA;
-}
-
 .buy-now-button {
     background-color: #4efbc5;
 }
-
 
 .topcoat-text-input:focus {
     border: 1px solid #4efbc5;

@@ -74,11 +74,17 @@
 </script>
 
 <script id="product">
-    <div class="topcoat-navigation-bar product-page-top-bar">
+    <div class="topcoat-navigation-bar top-nav-bar">
         <div class="topcoat-navigation-bar__item left quarter">
             <a class="topcoat-icon-button--quiet header-button" href="#">
                 <span class="topcoat-icon topcoat-icon--back"></span>
             </a>
+        </div>
+        <div class="topcoat-navigation-bar__item center half">
+                <span class="topcoat-icon header-icon"></span>
+        </div>
+        <div class="topcoat-navigation-bar__item right quarter">
+            <Button class="buy-now-button" url="{{productUrl}}">Buy Now</Button>
         </div>
         <div class="topcoat-navigation-bar__item center half">
             <h1 class="topcoat-navigation-bar__title"></h1>
@@ -91,9 +97,6 @@
         <h2>{{currentPrice}} <strike>{{previousPrice}}</strike></h2>
         <div class="topcoat-list__container scroller">
             <ul class="topcoat-list list actions">
-                <div>
-                    <li class="topcoat-list__item"><Button class="buy-now-button" url="{{productUrl}}">Buy Now</Button></li>
-                </div>
             	<div class="product-detail">
             	    <li class="topcoat-list__item">
                         <p>Product Description</p>
