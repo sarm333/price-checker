@@ -1,6 +1,7 @@
 var HomeView = function (adapter, homePage, listItem) {
 
     var homeView = this;
+    var requests = [];
 
 	this.initialize = function () {
 	    // Define a div wrapper for the view. The div wrapper is used to attach events.
@@ -54,9 +55,9 @@ var HomeView = function (adapter, homePage, listItem) {
         }
     }
 
-    this.showLoadSpinner = function() {
+    this.showLoadSpinner = function(message) {
         if(isMobile) {
-            ActivityIndicator.show("Adding...");
+            ActivityIndicator.show(message);
         }
     }
 
@@ -66,7 +67,7 @@ var HomeView = function (adapter, homePage, listItem) {
      */
     this.storeProductInfoFromUrl = function(url) {
         //TODO: handle crappy urls
-        this.showLoadSpinner();
+        this.showLoadSpinner("Adding...");
         url = url.replace("//m.", "//www.");
         $.ajax({
             url: url,
@@ -89,9 +90,9 @@ var HomeView = function (adapter, homePage, listItem) {
                     adapter.addToProductList(extractor.getProductName(), extractor.getProductPrice(), extractor.getMerchantName(), extractor.getProductImageThumb(), url, extractor.getProductDescription());
 
                     homeView.populateProductList(listItem);
-                    homeView.hideLoadSpinner();
                     document.getElementsByClassName("edit-button")[0].innerHTML = "Edit";       //set the Edit button to 'edit' if its still in removal mode.
                 }
+                homeView.hideLoadSpinner();
             },
             error: function (xhr, ajaxOptions, thrownError) {
                 homeView.hideLoadSpinner();
@@ -101,9 +102,9 @@ var HomeView = function (adapter, homePage, listItem) {
     }
 
 
-    this.updateProductInfoFromUrl = function(product) {
+    this.getAjaxProductUpdateObj = function(product) {
         //TODO: handle crappy urls
-        $.ajax({
+        return $.ajax({
             url: product["productUrl"],
             type: 'GET',
             timeout: 8000,
@@ -143,10 +144,12 @@ var HomeView = function (adapter, homePage, listItem) {
      * Refreshes the product list info.
      */
     this.refreshProductList = function() {
+        homeView.showLoadSpinner("Refreshing List...");
         var productList = adapter.getProducts();
         for(var product in productList) {
-           homeView.updateProductInfoFromUrl(productList[product]);
+            requests.push(homeView.getAjaxProductUpdateObj(productList[product]));
         }
+        $.when.apply(undefined, requests).then(homeView.hideLoadSpinner, homeView.hideLoadSpinner);
     }
 
     this.populateProductList = function(productList) {

@@ -1,5 +1,5 @@
 .topcoat-icon--back {
-    background: url("../topcoat/img/back_light.svg") no-repeat;
+    background: url("../topcoat/img/back.svg") no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -255,6 +255,11 @@ a {
 	height: auto;
 }
 
+.buy-now-area {
+    top: 6px;
+    bottom:10px;
+    left: 3px;
+}
 .buy-now-button {
     background-color: #4efbc5;
 }
