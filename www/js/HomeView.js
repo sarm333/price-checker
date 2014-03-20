@@ -48,12 +48,25 @@ var HomeView = function (adapter, homePage, listItem) {
 
     /* ---------------------------------- HomeView Functions ---------------------------------- */
 
+    this.hideLoadSpinner = function() {
+        if(isMobile) {
+            ActivityIndicator.hide();
+        }
+    }
+
+    this.showLoadSpinner = function() {
+        if(isMobile) {
+            ActivityIndicator.show("Adding...");
+        }
+    }
+
     /**
      * Stores product info from a given url into the list within the memory adaptor as well as the html list.
      * @param url
      */
     this.storeProductInfoFromUrl = function(url) {
         //TODO: handle crappy urls
+        this.showLoadSpinner();
         url = url.replace("//m.", "//www.");
         $.ajax({
             url: url,
@@ -76,8 +89,13 @@ var HomeView = function (adapter, homePage, listItem) {
                     adapter.addToProductList(extractor.getProductName(), extractor.getProductPrice(), extractor.getMerchantName(), extractor.getProductImageThumb(), url, extractor.getProductDescription());
 
                     homeView.populateProductList(listItem);
+                    homeView.hideLoadSpinner();
                     document.getElementsByClassName("edit-button")[0].innerHTML = "Edit";       //set the Edit button to 'edit' if its still in removal mode.
                 }
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                homeView.hideLoadSpinner();
+                alert("Failed to retrieve product from '" + url + "'");
             }
         });
     }
@@ -129,7 +147,6 @@ var HomeView = function (adapter, homePage, listItem) {
         for(var product in productList) {
            homeView.updateProductInfoFromUrl(productList[product]);
         }
-        //spinner.spin(false);
     }
 
     this.populateProductList = function(productList) {

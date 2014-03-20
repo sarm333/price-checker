@@ -70,6 +70,12 @@
     background-size: cover;
 }
 
+.refresh-button {
+    top: 6px;
+    bottom:10px;
+    right: 15px;
+}
+
 .icon-refresh-button {
     background: url("../topcoat/img/reload-icon.png") no-repeat;
     -webkit-background-size: cover;
@@ -161,9 +167,9 @@ a {
 }
 
 .details h1 {
-    padding: 12px 0px 4px 0px;
+    padding: 12px 0px 2px 0px;
     margin: 0px 0px 0px 0px;
-    font-size: 1.2rem;
+    font-size: 1.0rem;
     white-space: nowrap;
   	overflow: hidden;
   	text-overflow: ellipsis;
@@ -172,7 +178,7 @@ a {
 .details h2 {
     padding: 0px 0px 0px 0px;
     margin: 0px 0px 0px 0px;
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     font-weight: normal;
     color: #888;
 }

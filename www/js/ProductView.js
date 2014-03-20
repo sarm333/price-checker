@@ -12,7 +12,7 @@ var ProductView = function(adapter, productPage, product) {
 
     this.clickBuyNow = function() {
         var productUrl = $(".buy-now-button").attr("url");
-        var ref = window.open(productUrl, '_blank', 'location=yes,transitionstyle=crossdissolve');
+        var ref = window.open(productUrl, '_blank', 'location=yes,transitionstyle=crossdissolve,EnableViewPortScale=yes');
     }
 	
     this.initialize();
