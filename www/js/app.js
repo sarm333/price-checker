@@ -15,9 +15,6 @@
     adapter.initialize().done(function () {
         getListFromLocal();
         var homeView = route();
-        if(!window.location.hash) {
-            homeView.refreshProductList();
-        }
     });
 
     /* --------------------------------- Event Registration -------------------------------- */
@@ -47,9 +44,12 @@
             };
         }
         isMobile = true;
-        initPushwoosh();
+        //initPushwoosh();
         Fetcher = window.plugins.backgroundFetch;
         Fetcher.configure(fetchCallback);
+        if(!window.location.hash) {
+            homeView.refreshProductList();
+        }
     }
 
     function fetchCallback() {
