@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0, minimal-ui">
 	<link href="assets/topcoat/css/topcoat-mobile-light.css" rel="stylesheet">
 	<link href="assets/css/styles.css" rel="stylesheet">
 	<link href="assets/css/pageslider.css" rel="stylesheet">
@@ -37,24 +37,15 @@
     <div class="topcoat-list__container scroller">
     	<ul class="topcoat-list list product-list"></ul>
 	</div>
-
-	<!--div class="topcoat-tab-bar bottom-bar full">
-        <label class="topcoat-tab-bar__item">
-            <input type="radio" name="topcoat">
-            <button class="topcoat-tab-bar__button full active bottom-bar-button">
-                <div class="icomatic">Shopping list</div>
-                <div class="icon-label">Shopping</div>
-            </button>
-        </label>
-
-        <label class="topcoat-tab-bar__item">
-            <input type="radio" name="topcoat">
-            <button class="topcoat-tab-bar__button full bottom-bar-button">
-                <div class="icomatic">Browser</div>
-                <div class="icon-label">Browser</div>
-            </button>
-        </label>
-    </div-->
+    <div id="bottom-bar" class="topcoat-navigation-bar full">
+        <div id="bottom-left" class="topcoat-navigation-bar__item quarter">
+        </div>
+        <div id="status-area" class="topcoat-navigation-bar__item center half">
+            Last Updated: <span id="last-updated-text">never</span>
+        </div>
+        <div id="bottom-right" class="topcoat-navigation-bar__item quarter">
+        </div>
+    </div>
 </script>
 
 <script id="product-list">

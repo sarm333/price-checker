@@ -228,7 +228,7 @@ a {
     -webkit-tap-highlight-color: rgba(0,0,0,0);
     position: absolute;
     top: 141px;
-    bottom: 0px;
+    bottom: 42px;
     left: 0px;
     right: 0px;
 }
@@ -239,11 +239,6 @@ a {
     position: absolute;
 }
 
-.bottom-bar {
-    position: fixed; 
-    bottom: 0px;
-}
- 
 .icomatic {
     font-size: auto;
     text-rendering: optimizeLegibility;
@@ -266,4 +261,33 @@ a {
 
 .topcoat-text-input:focus {
     border: 1px solid #4efbc5;
+}
+
+#bottom-bar {
+    position: absolute;
+    bottom: 0px;
+    height: 49px;
+    border: 1px solid #888888;
+    background-color: #FAFAFA;
+}
+
+#status-area {
+    text-align: center;
+    vertical-align: middle;
+    line-height: 49px;
+    font-size: 0.8rem;
+}
+
+#bottom-right {
+    align-content: center;
+    text-align: right;
+    vertical-align: middle;
+    line-height: 49px;
+}
+
+#bottom-left {
+    align-content: center;
+    text-align: left;
+    vertical-align: middle;
+    line-height: 49px;
 }

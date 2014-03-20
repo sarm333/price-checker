@@ -153,6 +153,8 @@ var HomeView = function (adapter, homePage, listItem) {
             requests.push(homeView.getAjaxProductUpdateObj(productList[product]));
         }
         $.when.apply($, requests).always(homeView.hideLoadSpinner);
+        var currentdate = new Date();
+        document.getElementById("last-updated-text").innerHTML = currentdate.getHours() + ":" + currentdate.getMinutes();
     }
 
     this.populateProductList = function(productList) {
