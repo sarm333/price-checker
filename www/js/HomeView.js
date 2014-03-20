@@ -23,6 +23,7 @@ var HomeView = function (adapter, homePage, listItem) {
 	this.clickAddButton = function() {
 		var input = $('.url-input').val().toLowerCase();
         homeView.storeProductInfoFromUrl(input);
+        document.getElementsByClassName("url-input")[0].value = "";
 	}
 
     this.clickEditButton = function() {

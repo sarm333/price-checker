@@ -14,7 +14,7 @@
 
     adapter.initialize().done(function () {
         getListFromLocal();
-        var homeView = route();
+        route();
     });
 
     /* --------------------------------- Event Registration -------------------------------- */
