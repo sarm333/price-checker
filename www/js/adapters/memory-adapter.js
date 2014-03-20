@@ -79,15 +79,16 @@ var MemoryAdapter = function() {
             if(productId == products[product]["id"]) {
                 products[product]["imageUrl"] = updatedImageUrl;
 
+                console.log(product);
                 if(updatedPrice.indexOf("|") != -1) {
                     updatedPrice = updatedPrice.split("|")[0];
                 }
-
-                console.log("New Price: " + this.stringToNumber(updatedPrice));
-                console.log("Old Price: " + this.stringToNumber(products[product]["currentPrice"]));
+                //console.log("New Price: " + this.stringToNumber(updatedPrice));
+                //console.log("Old Price: " + this.stringToNumber(products[product]["currentPrice"]));
                 if(this.stringToNumber(updatedPrice) != this.stringToNumber(products[product]["currentPrice"])) {
                     products[product]["previousPrice"] = products[product]["currentPrice"];
                     products[product]["currentPrice"] = updatedPrice;
+                    alert(products[product]["productName"] + " has changed from " + products[product]["previousPrice"] + " to " + products[product]["currentPrice"]);
                     if(isMobile) {
                         window.plugin.notification.local.add({
                             id: productId,

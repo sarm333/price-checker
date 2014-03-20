@@ -48,7 +48,7 @@
         Fetcher = window.plugins.backgroundFetch;
         Fetcher.configure(fetchCallback);
         if(!window.location.hash) {
-            homeView.refreshProductList();
+            setTimeout(homeView.refreshProductList, 500);
         }
     }
 

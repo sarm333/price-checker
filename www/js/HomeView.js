@@ -108,7 +108,8 @@ var HomeView = function (adapter, homePage, listItem) {
         return $.ajax({
             url: product["productUrl"],
             type: 'GET',
-            timeout: 8000,
+            timeout: 5000,
+            async: false,
             dataType: 'xml',
             success: function(data) {
                 var response = data.responseText;
@@ -124,11 +125,12 @@ var HomeView = function (adapter, homePage, listItem) {
                 adapter.updateExistingProductInfo(product["id"], newProduct.getProductPrice(), newProduct.getProductImageThumb());
                 homeView.populateProductList(listItem);
                 document.getElementsByClassName("edit-button")[0].innerHTML = "Edit";
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+                alert("Failed to retrieve product from '" + product["productUrl"] + "'");
             }
         });
     }
-
-
 
     /**
      * Will return the appropriate extractor depending on the url.
@@ -150,7 +152,7 @@ var HomeView = function (adapter, homePage, listItem) {
         for(var product in productList) {
             requests.push(homeView.getAjaxProductUpdateObj(productList[product]));
         }
-        $.when.apply(undefined, requests).then(homeView.hideLoadSpinner, homeView.hideLoadSpinner);
+        $.when.apply($, requests).always(homeView.hideLoadSpinner);
     }
 
     this.populateProductList = function(productList) {
