@@ -126,7 +126,22 @@ var HomeView = function (adapter, homePage, listItem) {
                 homeView.populateProductList(listItem);
                 document.getElementsByClassName("edit-button")[0].innerHTML = "Edit";
             },
-            error: function (xhr, ajaxOptions, thrownError) {
+            error: function (request, type, thrownError) {
+                var message = "There was an error with the url" + product["productUrl"] + ".\n";
+                switch (type) {
+                    case 'timeout':
+                        message += "The request timed out.";
+                        break;
+                    case 'notmodified':
+                        message += "The request was not modified but was not retrieved from the cache.";
+                        break;
+                    case 'parsererror':
+                        message += "XML/Json format is bad.";
+                        break;
+                    default:
+                        message += "HTTP Error (" + request.status + " " + request.statusText + ").";
+                }
+                message += "\n";
                 alert("Failed to retrieve product from '" + product["productUrl"] + "'");
             }
         });
