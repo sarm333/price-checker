@@ -11,6 +11,7 @@ var HomeView = function (adapter, homePage, listItem) {
         this.el.on('click', '.edit-button', this.clickEditButton);
         this.el.on('click', '.remove-button', this.clickRemoveButton);
         this.el.on('click', '.refresh-button', this.clickRefreshButton);
+        this.el.on('click', '#remove-all-button', this.clickRemoveAllButton);
 	};
 
 	this.render = function() {
@@ -19,6 +20,13 @@ var HomeView = function (adapter, homePage, listItem) {
 	};
 
     /* ---------------------------------- Button Listeners ---------------------------------- */
+
+    this.clickRemoveAllButton = function() {
+        adapter.removeAllProducts();
+        $( ".product-list")[0].innerHTML = "";
+        document.getElementsByClassName("edit-button")[0].innerHTML = "Edit";
+        $( "#remove-all-button").hide("fast");
+    }
 
 	this.clickAddButton = function() {
 		var input = $('.url-input').val().toLowerCase();
@@ -30,8 +38,10 @@ var HomeView = function (adapter, homePage, listItem) {
         $( ".removal" ).toggle("fast");
         if(this.innerHTML == "Edit" && adapter.getProducts().length != 0) {
             this.innerHTML = "Done";
+            $( "#remove-all-button").show("fast");
         } else {
             this.innerHTML = "Edit";
+            $( "#remove-all-button").hide("fast");
         }
     }
 
@@ -41,6 +51,7 @@ var HomeView = function (adapter, homePage, listItem) {
         this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode);
         if(adapter.getProducts().length == 0) {
             document.getElementsByClassName("edit-button")[0].innerHTML = "Edit";
+            $( "#remove-all-button").hide("fast");
         }
     }
 
@@ -49,6 +60,10 @@ var HomeView = function (adapter, homePage, listItem) {
     }
 
     /* ---------------------------------- HomeView Functions ---------------------------------- */
+
+    this.editModeOff = function() {
+
+    }
 
     this.hideLoadSpinner = function() {
         if(isMobile) {
@@ -92,6 +107,7 @@ var HomeView = function (adapter, homePage, listItem) {
 
                     homeView.populateProductList(listItem);
                     document.getElementsByClassName("edit-button")[0].innerHTML = "Edit";       //set the Edit button to 'edit' if its still in removal mode.
+                    $( "#remove-all-button").hide("fast");
                 }
                 homeView.hideLoadSpinner();
             },
@@ -125,6 +141,7 @@ var HomeView = function (adapter, homePage, listItem) {
                 adapter.updateExistingProductInfo(product["id"], newProduct.getProductPrice(), newProduct.getProductImageThumb());
                 homeView.populateProductList(listItem);
                 document.getElementsByClassName("edit-button")[0].innerHTML = "Edit";
+                $( "#remove-all-button").hide("fast");
             },
             error: function (request, type, thrownError) {
                 var message = "There was an error with the url" + product["productUrl"] + ".\n";

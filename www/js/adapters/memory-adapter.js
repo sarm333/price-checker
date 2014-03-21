@@ -54,6 +54,11 @@ var MemoryAdapter = function() {
         this.storeLocally();
     }
 
+    this.removeAllProducts = function() {
+        localStorage.clear();
+        products = [];
+    }
+
     this.addToProductList = function(productName, currPrice, merchantName, imageUrl, productUrl, description) {
         var id = merchantName + "_" + productName;
         id = id.replace(/ /gi, "_").toLowerCase();

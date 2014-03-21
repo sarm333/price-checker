@@ -59,10 +59,10 @@
 }
 
 .edit-button {
-    top: 6px;
-    bottom:10px;
-    left: 5px;
-}
+     top: 6px;
+     bottom:10px;
+     left: 5px;
+ }
 
 .icon-edit-button {
     -webkit-background-size: cover;
@@ -255,6 +255,11 @@ a {
     bottom:10px;
     left: 3px;
 }
+
+#remove-all-button {
+
+}
+
 .buy-now-button {
     background-color: #4efbc5;
 }
@@ -275,14 +280,14 @@ a {
     text-align: center;
     vertical-align: middle;
     line-height: 49px;
-    font-size: 0.8rem;
+    font-size: 0.7rem;
 }
 
 #bottom-right {
     align-content: center;
-    text-align: right;
-    vertical-align: middle;
+    right: 15px;
     line-height: 49px;
+    bottom: 3px;
 }
 
 #bottom-left {
