@@ -25,7 +25,8 @@
                 "<feature name=\"Notification\"><param name=\"ios-package\" value=\"CDVNotification\" /></feature>": 1,
                 "<feature name=\"InAppBrowser\"><param name=\"ios-package\" value=\"CDVInAppBrowser\" /></feature>": 1,
                 "<feature name=\"BackgroundFetch\"><param name=\"ios-package\" value=\"CDVBackgroundFetch\" /><param name=\"onload\" value=\"true\" /></feature>": 1,
-                "<feature name=\"ActivityIndicator\"><param name=\"ios-package\" value=\"ActivityIndicator\" /></feature>": 1
+                "<feature name=\"ActivityIndicator\"><param name=\"ios-package\" value=\"ActivityIndicator\" /></feature>": 1,
+                "<feature name=\"Badge\"><param name=\"ios-package\" value=\"APPBadge\" /></feature>": 1
             }
         },
         "undefined": {
@@ -62,6 +63,9 @@
             "PACKAGE_NAME": "com.sarm.tellme"
         },
         "org.apache.cordova.plugin.ActivityIndicator": {
+            "PACKAGE_NAME": "com.sarm.tellme"
+        },
+        "de.appplant.cordova.plugin.badge": {
             "PACKAGE_NAME": "com.sarm.tellme"
         }
     },

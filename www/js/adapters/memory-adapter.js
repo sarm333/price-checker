@@ -95,6 +95,7 @@ var MemoryAdapter = function() {
                             title:   products[product]["productName"],
                             message: "is now " + products[product]["currentPrice"] + " from " + products[product]["previousPrice"]
                         });
+                        window.plugin.notification.badge.set(++numOfNotifications);
                     }
 
                 }

@@ -3,6 +3,7 @@
 
     /* ---------------------------------- Local Variables ---------------------------------- */
     isMobile = false;
+    numOfNotifications = 0;
     var homePage = Handlebars.compile($("#home").html());
     var productList = Handlebars.compile($("#product-list").html());
     var productPage = Handlebars.compile($("#product").html());
@@ -50,6 +51,8 @@
         if(!window.location.hash) {
             setTimeout(homeView.refreshProductList, 500);
         }
+        window.plugin.notification.badge.clear();
+        numOfNotifications = 0;
     }
 
     function fetchCallback() {
@@ -63,6 +66,9 @@
 
     function onResume() {
         console.log('Resuming app');
+        window.plugin.notification.badge.clear();
+        numOfNotifications = 0;
+
     }
 
     /**

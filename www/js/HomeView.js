@@ -108,7 +108,7 @@ var HomeView = function (adapter, homePage, listItem) {
         return $.ajax({
             url: product["productUrl"],
             type: 'GET',
-            timeout: 5000,
+            timeout: 3000,
             async: false,
             dataType: 'xml',
             success: function(data) {
