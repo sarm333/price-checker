@@ -6,7 +6,7 @@ var HomeView = function (adapter, homePage, listItem) {
 	this.initialize = function () {
 	    // Define a div wrapper for the view. The div wrapper is used to attach events.
 	    this.el = $('<div/>');
-
+	    
 	    this.el.on('click', '.add-button', this.clickAddButton);
         this.el.on('click', '.edit-button', this.clickEditButton);
         this.el.on('click', '.remove-button', this.clickRemoveButton);
@@ -60,6 +60,10 @@ var HomeView = function (adapter, homePage, listItem) {
     }
 
     /* ---------------------------------- HomeView Functions ---------------------------------- */
+
+    this.editModeOff = function() {
+
+    }
 
     this.hideLoadSpinner = function() {
         if(isMobile) {
