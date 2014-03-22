@@ -35,30 +35,13 @@ var HomeView = function (adapter, homePage, listItem) {
 	}
 
     this.clickEditButton = function() {
-        //$( ".removal" ).toggle("fast");
+        $( ".removal" ).toggle("fast");
         if(this.innerHTML == "Edit" && adapter.getProducts().length != 0) {
             this.innerHTML = "Done";
             $( "#remove-all-button").show("fast");
-/*            $(".remove-button").each(function () {
-                var style = "translate3d(0,0,0)";
-                this.style.top = ((this.offsetHeight - this.offsetHeight) / 2) + "px";
-                this.style.opacity = 1;
-                this.style.transform = style;
-                this.style.webkitTransform = style;
-                this.style.mozTransform = style;
-                this.style.oTransform = style;
-            });*/
         } else {
             this.innerHTML = "Edit";
             $( "#remove-all-button").hide("fast");
-/*            $(".remove-button").each(function () {
-                var style = "translate3d(20px,0,0)";
-                this.style.opacity = 0;
-                this.style.transform = style;
-                this.style.webkitTransform = style;
-                this.style.mozTransform = style;
-                this.style.oTransform = style;
-            });*/
         }
     }
 
@@ -154,8 +137,6 @@ var HomeView = function (adapter, homePage, listItem) {
                 adapter.updateExistingProductInfo(product["id"], newProduct.getProductPrice(), newProduct.getProductImageThumb());
                 homeView.populateProductList(listItem);
                 document.getElementsByClassName("edit-button")[0].innerHTML = "Edit";
-                var currentdate = new Date();
-                document.getElementById("last-updated-text").innerHTML = currentdate.getHours() + ":" + currentdate.getMinutes();
                 $( "#remove-all-button").hide("fast");
             },
             error: function (request, type, thrownError) {
@@ -200,6 +181,8 @@ var HomeView = function (adapter, homePage, listItem) {
             requests.push(homeView.getAjaxProductUpdateObj(productList[product]));
         }
         $.when.apply($, requests).always(homeView.hideLoadSpinner);
+        var currentdate = new Date();
+        document.getElementById("last-updated-text").innerHTML = currentdate.getHours() + ":" + currentdate.getMinutes();
     }
 
     this.populateProductList = function(productList) {
