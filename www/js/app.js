@@ -81,7 +81,6 @@
             slider.slidePage(homeView.render().el);
             populateProductList();
             document.getElementsByClassName("edit-button")[0].innerHTML = "Edit";
-            initSwipeOut();
             return homeView;
         }
         var match = hash.match(detailsURL);
@@ -98,6 +97,7 @@
      */
     function populateProductList() {
         $('.product-list').html(productList(adapter.getProducts()));
+        initSwipeOut();
     }
 
     /**
@@ -137,7 +137,7 @@
 
     function initSwipeOut() {
         var list = document.getElementsByClassName("product-list")[0];
-        var swipeOut = new SwipeOut(list);
+        new SwipeOut(list, {btnText: "Remove"});
 
         list.addEventListener("delete", function(e) {
             var productId = e.target.childNodes[1].getAttribute("href").replace("#products/", "");
