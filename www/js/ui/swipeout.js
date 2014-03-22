@@ -177,7 +177,6 @@ function SwipeOut(listEl, options) {
   addCss(".swipe-out > li { position: relative; }");
 
   // style list
-  listEl.style.overflow = "hidden";
   addClass(listEl, "swipe-out");
 
   attachEvents();

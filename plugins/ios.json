@@ -13,20 +13,19 @@
             },
             "CoreGraphics.framework": {
                 "false": 1
-            },
-            "ImageIO.framework": {}
+            }
         },
         "config.xml": {
             "/*": {
                 "<feature name=\"PushNotification\"><param name=\"ios-package\" value=\"PushNotification\" /></feature>": 1,
+                "<feature name=\"Badge\"><param name=\"ios-package\" value=\"APPBadge\" /></feature>": 1,
                 "<feature name=\"Device\"><param name=\"ios-package\" value=\"CDVDevice\" /></feature>": 1,
                 "<feature name=\"LocalNotification\"><param name=\"ios-package\" onload=\"true\" value=\"APPLocalNotification\" /><param name=\"onload\" value=\"true\" /></feature>": 1,
                 "<feature name=\"Console\"><param name=\"ios-package\" value=\"CDVLogger\" /></feature>": 1,
                 "<feature name=\"Notification\"><param name=\"ios-package\" value=\"CDVNotification\" /></feature>": 1,
                 "<feature name=\"InAppBrowser\"><param name=\"ios-package\" value=\"CDVInAppBrowser\" /></feature>": 1,
-                "<feature name=\"BackgroundFetch\"><param name=\"ios-package\" value=\"CDVBackgroundFetch\" /><param name=\"onload\" value=\"true\" /></feature>": 1,
                 "<feature name=\"ActivityIndicator\"><param name=\"ios-package\" value=\"ActivityIndicator\" /></feature>": 1,
-                "<feature name=\"Badge\"><param name=\"ios-package\" value=\"APPBadge\" /></feature>": 1
+                "<feature name=\"BackgroundFetch\"><param name=\"ios-package\" value=\"CDVBackgroundFetch\" /><param name=\"onload\" value=\"true\" /></feature>": 1
             }
         },
         "undefined": {
@@ -47,6 +46,9 @@
         "com.red_folder.phonegap.plugin.backgroundservice": {
             "PACKAGE_NAME": "com.sarm.tellme"
         },
+        "de.appplant.cordova.plugin.badge": {
+            "PACKAGE_NAME": "com.sarm.tellme"
+        },
         "de.appplant.cordova.plugin.local-notification": {
             "PACKAGE_NAME": "com.sarm.tellme"
         },
@@ -59,13 +61,10 @@
         "org.apache.cordova.inappbrowser": {
             "PACKAGE_NAME": "com.sarm.tellme"
         },
-        "org.transistorsoft.cordova.plugin.background.fetch": {
-            "PACKAGE_NAME": "com.sarm.tellme"
-        },
         "org.apache.cordova.plugin.ActivityIndicator": {
             "PACKAGE_NAME": "com.sarm.tellme"
         },
-        "de.appplant.cordova.plugin.badge": {
+        "org.transistorsoft.cordova.plugin.background.fetch": {
             "PACKAGE_NAME": "com.sarm.tellme"
         }
     },
