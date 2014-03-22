@@ -61,10 +61,6 @@ var HomeView = function (adapter, homePage, listItem) {
 
     /* ---------------------------------- HomeView Functions ---------------------------------- */
 
-    this.editModeOff = function() {
-
-    }
-
     this.hideLoadSpinner = function() {
         if(isMobile) {
             ActivityIndicator.hide();
@@ -142,6 +138,7 @@ var HomeView = function (adapter, homePage, listItem) {
                 homeView.populateProductList(listItem);
                 document.getElementsByClassName("edit-button")[0].innerHTML = "Edit";
                 $( "#remove-all-button").hide("fast");
+
             },
             error: function (request, type, thrownError) {
                 var message = "There was an error with the url" + product["productUrl"] + ".\n";
@@ -164,6 +161,12 @@ var HomeView = function (adapter, homePage, listItem) {
         });
     }
 
+    this.refreshDone = function() {
+        homeView.hideLoadSpinner();
+        var currentdate = new Date();
+        document.getElementById("last-updated-text").innerHTML = currentdate.getHours() + ":" + currentdate.getMinutes();
+    }
+
     /**
      * Will return the appropriate extractor depending on the url.
      * @param htmlResponse
@@ -184,9 +187,7 @@ var HomeView = function (adapter, homePage, listItem) {
         for(var product in productList) {
             requests.push(homeView.getAjaxProductUpdateObj(productList[product]));
         }
-        $.when.apply($, requests).always(homeView.hideLoadSpinner);
-        var currentdate = new Date();
-        document.getElementById("last-updated-text").innerHTML = currentdate.getHours() + ":" + currentdate.getMinutes();
+        $.when.apply($, requests).always(homeView.refreshDone);
     }
 
     this.populateProductList = function(productList) {
