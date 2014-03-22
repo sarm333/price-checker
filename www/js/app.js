@@ -81,6 +81,7 @@
             slider.slidePage(homeView.render().el);
             populateProductList();
             document.getElementsByClassName("edit-button")[0].innerHTML = "Edit";
+            initSwipeOut();
             return homeView;
         }
         var match = hash.match(detailsURL);
@@ -131,6 +132,21 @@
             var notification = event.notification;
             navigator.notification.alert(notification.aps.alert);
             pushNotification.setApplicationIconBadgeNumber(0);
+        });
+    }
+
+    function initSwipeOut() {
+        var list = document.getElementsByClassName("product-list")[0];
+        var swipeOut = new SwipeOut(list);
+
+        list.addEventListener("delete", function(e) {
+            var productId = e.target.childNodes[1].getAttribute("href").replace("#products/", "");
+
+            adapter.removeProductFromList(productId);
+            if(adapter.getProducts().length == 0) {
+                document.getElementsByClassName("edit-button")[0].innerHTML = "Edit";
+                $( "#remove-all-button").hide("fast");
+            }
         });
     }
 }());
