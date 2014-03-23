@@ -1,7 +1,8 @@
 var HomeView = function (adapter, homePage, listItem) {
 
     var homeView = this;
-    var requests = [];
+    var $queue = [];
+    var totalNumOfProducts = 0;
 
 	this.initialize = function () {
 	    // Define a div wrapper for the view. The div wrapper is used to attach events.
@@ -115,29 +116,28 @@ var HomeView = function (adapter, homePage, listItem) {
     }
 
 
-    this.getAjaxProductUpdateObj = function(product) {
+    this.getAjaxProductUpdateObj = function(func, product, delay) {
         //TODO: handle crappy urls
         return $.ajax({
             url: product["productUrl"],
             type: 'GET',
-            timeout: 3000,
-            async: false,
+            timeout: 8000,
             dataType: 'xml',
             success: function(data) {
                 var response = data.responseText;
 
                 //Get correct extractor
                 var newProduct = homeView.getExtractor(response, product["productUrl"]);
-                /*console.log(newProduct.getProductName());
-                console.log(newProduct.getProductPrice());
-                console.log(newProduct.getProductImageThumb());
-                console.log(newProduct.getProductDescription());
-                console.log();*/
+
                 //Store new details
                 adapter.updateExistingProductInfo(product["id"], newProduct.getProductPrice(), newProduct.getProductImageThumb());
                 homeView.populateProductList(listItem);
                 document.getElementsByClassName("edit-button")[0].innerHTML = "Edit";
                 $( "#remove-all-button").hide("fast");
+                func(data); // run callback
+                window.setTimeout(function () {
+                    runQueue(func, delay); // run the next in queue, if any
+                }, delay);
 
             },
             error: function (request, type, thrownError) {
@@ -156,15 +156,13 @@ var HomeView = function (adapter, homePage, listItem) {
                         message += "HTTP Error (" + request.status + " " + request.statusText + ").";
                 }
                 message += "\n";
-                alert("Failed to retrieve product from '" + product["productUrl"] + "'");
+                alert(message);
+                func(data); // run callback
+                window.setTimeout(function () {
+                    runQueue(func, delay); // carry on running the next url in queue
+                }, delay);
             }
         });
-    }
-
-    this.refreshDone = function() {
-        homeView.hideLoadSpinner();
-        var currentdate = new Date();
-        document.getElementById("last-updated-text").innerHTML = currentdate.getHours() + ":" + currentdate.getMinutes();
     }
 
     /**
@@ -179,15 +177,61 @@ var HomeView = function (adapter, homePage, listItem) {
     }
 
     /**
-     * Refreshes the product list info.
+     * Refreshes the product list info. First creates an array of products and then chucks them into a queue
+     * to be used to fetch the update via an ajax call in the given order.
      */
     this.refreshProductList = function() {
-        homeView.showLoadSpinner("Refreshing List...");
+        document.getElementsByClassName("refresh-button")[0].disabled = true;
+        var requests = [];
         var productList = adapter.getProducts();
         for(var product in productList) {
-            requests.push(homeView.getAjaxProductUpdateObj(productList[product]));
+            requests.push(productList[product]);
         }
-        $.when.apply($, requests).always(homeView.refreshDone);
+        //$.when.apply($, requests).always(homeView.refreshDone);
+        totalNumOfProducts = requests.length;
+        runQueue(250, handleRefreshFinish, requests);
+    }
+
+    /**
+     * Checks to see if the queue has finished, if it has then stop the spinner.
+     */
+    function handleRefreshFinish() {
+        document.getElementById("update-progress").innerHTML = "Updating...";
+        if ($queue.length != 0) {
+            document.getElementById("update-progress").innerHTML = "Updating " + (totalNumOfProducts - $queue.length) + " of " + totalNumOfProducts + " items";
+        } else {
+            var currentDate = new Date();
+            var minutes;
+            if(currentDate.getMinutes() < 10) {
+                minutes = "0" + currentDate.getMinutes();
+            } else {
+                minutes = currentDate.getMinutes();
+            }
+            document.getElementById("last-updated-text").innerHTML = currentDate.getHours() + ":" + minutes;
+            document.getElementById("update-progress").innerHTML = "Updating " + (totalNumOfProducts - $queue.length) + " of " + totalNumOfProducts + " items";
+            window.setTimeout(function() {
+                document.getElementById("update-progress").innerHTML = "";
+            }, 250);
+            document.getElementsByClassName("refresh-button")[0].disabled = false;
+        }
+    }
+
+    /**
+     *
+     */
+    function runQueue() {
+        var i, func = null, delay = 0, arg;
+
+        for (i = 0; i < arguments.length; i += 1) {
+            arg = arguments[i];
+            if ( Array.isArray(arg) ) $queue = $queue.concat(arg);
+            else if (typeof arg === 'function') func = arg;
+            else if (typeof arg === 'number' && arg > 0) delay = Math.floor(arg);
+        }
+
+        if ($queue.length === 0) { return; }
+        if (func === null) func = function () {};
+        homeView.getAjaxProductUpdateObj(func, $queue.shift(), delay); // run an ajax request with the first product in the queue, then remove it from the queue
     }
 
     this.populateProductList = function(productList) {

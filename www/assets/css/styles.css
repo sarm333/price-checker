@@ -309,3 +309,8 @@ a {
     vertical-align: middle;
     line-height: 49px;
 }
+
+#update-progress {
+    font-size: 0.7rem;
+    align-content: left;
+}
