@@ -4,6 +4,7 @@
     /* ---------------------------------- Local Variables ---------------------------------- */
     isMobile = false;
     numOfNotifications = 0;
+    lastRefreshTime = "never";
     var homePage = Handlebars.compile($("#home").html());
     var productList = Handlebars.compile($("#product-list").html());
     var productPage = Handlebars.compile($("#product").html());
@@ -81,6 +82,7 @@
             slider.slidePage(homeView.render().el);
             populateProductList();
             document.getElementsByClassName("edit-button")[0].innerHTML = "Edit";
+            document.getElementsByClassName("last-updated-text")[0].innerHTML = lastRefreshTime;
             return homeView;
         }
         var match = hash.match(detailsURL);
@@ -89,6 +91,7 @@
             adapter.findById(id).done(function(productListItem) {
                 slider.slidePage(new ProductView(adapter, productPage, productListItem).render().el);
             });
+            document.getElementsByClassName("last-updated-text")[1].innerHTML = lastRefreshTime;
         }
     }
 

@@ -207,7 +207,8 @@ var HomeView = function (adapter, homePage, listItem) {
             } else {
                 minutes = currentDate.getMinutes();
             }
-            document.getElementById("last-updated-text").innerHTML = currentDate.getHours() + ":" + minutes;
+            lastRefreshTime = currentDate.getHours() + ":" + minutes;
+            document.getElementsByClassName("last-updated-text")[0].innerHTML = lastRefreshTime;
             document.getElementById("update-progress").innerHTML = "Updating " + (totalNumOfProducts - $queue.length) + " of " + totalNumOfProducts + " items";
             window.setTimeout(function() {
                 document.getElementById("update-progress").innerHTML = "";

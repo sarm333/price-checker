@@ -41,7 +41,7 @@
         <div id="bottom-left" class="topcoat-navigation-bar__item left quarter">
         </div>
         <div id="status-area" class="topcoat-navigation-bar__item center half">
-            Last Updated: <span id="last-updated-text">never</span>
+            Last Updated: <span class="last-updated-text"></span>
         </div>
         <div id="bottom-right" class="topcoat-navigation-bar__item right quarter">
             <Button id="remove-all-button" style="display:none">Remove All</Button>
@@ -59,7 +59,7 @@
             <span class="chevron"></span><span class="count">{{reports}}</span>
         </a>
         <span class="removal" style="display:none">
-                <Button class="remove-button">Remove</Button>
+            <div class="remove-button">Remove</div>
         </span>
     </li>
     {{/.}}
@@ -95,6 +95,15 @@
                     </li>
             	</div>
             </ul>
+        </div>
+    </div>
+    <div id="bottom-bar" class="topcoat-navigation-bar full">
+        <div id="bottom-left" class="topcoat-navigation-bar__item left quarter">
+        </div>
+        <div id="status-area" class="topcoat-navigation-bar__item center half">
+            Last Updated: <span class="last-updated-text"></span>
+        </div>
+        <div id="bottom-right" class="topcoat-navigation-bar__item right quarter">
         </div>
     </div>
 </script>
