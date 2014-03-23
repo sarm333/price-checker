@@ -136,6 +136,14 @@ var MemoryAdapter = function() {
         localStorage.setItem("productList", JSON.stringify(products));
     }
 
+    this.setLastRefreshTime = function(time) {
+        lastRefreshTime = time;
+    }
+
+    this.getLastRefreshTime = function() {
+        return lastRefreshTime;
+    }
+
     /*
      * id
      * productName
@@ -147,4 +155,6 @@ var MemoryAdapter = function() {
      * description
      */
     var products = [];
+
+    var lastRefreshTime = "never";
 }

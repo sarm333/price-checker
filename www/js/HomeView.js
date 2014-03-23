@@ -157,7 +157,7 @@ var HomeView = function (adapter, homePage, listItem) {
                 }
                 message += "\n";
                 alert(message);
-                func(data); // run callback
+                func(); // run callback
                 window.setTimeout(function () {
                     runQueue(func, delay); // carry on running the next url in queue
                 }, delay);
@@ -207,8 +207,8 @@ var HomeView = function (adapter, homePage, listItem) {
             } else {
                 minutes = currentDate.getMinutes();
             }
-            lastRefreshTime = currentDate.getHours() + ":" + minutes;
-            document.getElementsByClassName("last-updated-text")[0].innerHTML = lastRefreshTime;
+            adapter.setLastRefreshTime(currentDate.getHours() + ":" + minutes);
+            document.getElementById("last-updated-text-page-one").innerHTML = adapter.getLastRefreshTime();
             document.getElementById("update-progress").innerHTML = "Updating " + (totalNumOfProducts - $queue.length) + " of " + totalNumOfProducts + " items";
             window.setTimeout(function() {
                 document.getElementById("update-progress").innerHTML = "";
