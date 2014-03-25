@@ -141,7 +141,7 @@ var HomeView = function (adapter, homePage, listItem) {
 
             },
             error: function (request, type, thrownError) {
-                var message = "There was an error with the url" + product["productUrl"] + ".\n";
+                var message = "There was an error with the item " + product["productName"] + ".\n";
                 switch (type) {
                     case 'timeout':
                         message += "The request timed out.";

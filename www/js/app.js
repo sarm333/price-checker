@@ -53,6 +53,16 @@
         }
         window.plugin.notification.badge.clear();
         numOfNotifications = 0;
+        var storedRefreshTime = localStorage.getItem("lastRefreshTime");
+        if(storedRefreshTime != null) {
+            adapter.setLastRefreshTime(localStorage.getItem("lastRefreshTime"));
+            document.getElementById("last-updated-text-page-one").innerHTML = adapter.getLastRefreshTime();
+            document.getElementsByClassName("last-updated-text")[0].innerHTML = adapter.getLastRefreshTime();
+        } else {
+            document.getElementById("last-updated-text-page-one").innerHTML = "-";
+            document.getElementsByClassName("last-updated-text")[0].innerHTML = "-";
+        }
+
     }
 
     function fetchCallback() {
