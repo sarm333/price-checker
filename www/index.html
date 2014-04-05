@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0, minimal-ui">
 	<link href="assets/topcoat/css/topcoat-mobile-light.css" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" media="all" href="assets/css/mmenu.css" />
 	<link href="assets/css/styles.css" rel="stylesheet">
 	<link href="assets/css/pageslider.css" rel="stylesheet">
     <link href="assets/css/base.css" rel="stylesheet">
@@ -12,42 +13,69 @@
 </head>
 <body>
 
-<script id="home">
-    <div class="topcoat-navigation-bar top-nav-bar">
-        <div class="topcoat-navigation-bar__item left quarter">
-            <span class="topcoat-icon-button--quiet refresh-button">
-                <span class="topcoat-icon icon-refresh-button"></span>
+<nav id="my-menu">
+    <ul class="List">
+        <li> <a>Stores</a>
+            <ul class="List">
+                <li><a onclick="window.open('http://www.asos.co.uk','_blank');">Asos</a></li>
+                <li><a onclick="window.open('http://www.newlook.com','_blank');">New Look</a></li>
+                <li><a onclick="window.open('http://www.riverisland.com/','_blank');">River Island</a></li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+<script id="home"> <!-- the wrapper -->
+<div id="homepage" class="mm-fixed-top">
+    <div id="header">
+        <div class="topcoat-navigation-bar top-nav-bar">
+            <div class="topcoat-navigation-bar__item left quarter">
+                <!--span class="topcoat-icon-button--quiet refresh-button">
+                    <span class="topcoat-icon icon-refresh-button"></span>
+                </span-->
+            <span class="topcoat-icon-button--quiet menu-button">
+                    <span class="topcoat-icon icon-menu-button"></span>
             </span>
-        </div>
-        <div class="topcoat-navigation-bar__item center half">
-            <span id="update-progress"></span>
-        </div>
-        <div class="topcoat-navigation-bar__item right quarter">
+            </div>
+            <div class="topcoat-navigation-bar__item center half">
+                <span id="update-progress"></span>
+            </div>
+            <div class="topcoat-navigation-bar__item right quarter">
             <span class="topcoat-icon-button--quiet edit-button">
                 <span class="topcoat-icon icon-edit-button"></span>
             </span>
+            </div>
+        </div>
+        <div class="top-bar">
+            <input type="text" placeholder="url" onfocus="this.value=''" class="topcoat-text-input url-input">
+            <span class="topcoat-icon-button--quiet add-button">
+                <span class="topcoat-icon icon-add-button"></span>
+            </span>
         </div>
     </div>
-    <div class="top-bar">
-    	<input type="text" placeholder="url" onfocus="this.value=''" class="topcoat-text-input url-input">
-        <span class="topcoat-icon-button--quiet add-button">
-            <span class="topcoat-icon icon-add-button"></span>
-        </span>
-    </div>
-    <div class="topcoat-list__container scroller">
-    	<ul class="topcoat-list list product-list"></ul>
-	</div>
-    <div id="bottom-bar" class="topcoat-navigation-bar full">
-        <div id="bottom-left" class="topcoat-navigation-bar__item left quarter">
-        </div>
-        <div id="status-area" class="topcoat-navigation-bar__item center half">
-            Last Updated: <span id="last-updated-text-page-one"></span>
-        </div>
-        <div id="bottom-right" class="topcoat-navigation-bar__item right quarter">
-            <Button id="remove-all-button" style="display:none">Remove All</Button>
+    <div id="content" class="mm-fixed-mid">
+        <div class="topcoat-list__container scroller">
+            <ul class="topcoat-list list product-list"></ul>
         </div>
     </div>
+    <div id="footer">
+        <div id="bottom-bar" class="topcoat-navigation-bar full">
+            <div id="bottom-left" class="topcoat-navigation-bar__item left quarter">
+                <!--span class="topcoat-icon-button--quiet browser-button">
+                    <span class="topcoat-icon icon-browser-button"></span>
+                </span-->
+            </div>
+            <div id="status-area" class="topcoat-navigation-bar__item center half">
+                Last Updated: <span id="last-updated-text-page-one"></span>
+            </div>
+            <div id="bottom-right" class="topcoat-navigation-bar__item right quarter">
+                <Button id="remove-all-button" style="display:none">Remove All</Button>
+            </div>
+        </div>
+    </div>
+</div>
 </script>
+
+
 
 <script id="product-list">
     {{#.}}
@@ -124,6 +152,7 @@
 <script src="js/extractors/NewLookExtractor.js"></script>
 <script src="js/extractors/TestSiteExtractor.js"></script>
 <script src="lib/pageslider.js"></script>
+<script src="js/jquery.mmenu.js"></script>
 <script type="text/javascript" charset="utf-8" src="PushNotification.js"></script>
 <script type="text/javascript" charset="utf-8" src="BackgroundFetch.js"></script>
 <script type="text/javascript" charset="utf-8" src="BackgroundFetchService.js"></script>

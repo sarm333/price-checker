@@ -13,6 +13,17 @@ var HomeView = function (adapter, homePage, listItem) {
         this.el.on('click', '.remove-button', this.clickRemoveButton);
         this.el.on('click', '.refresh-button', this.clickRefreshButton);
         this.el.on('click', '#remove-all-button', this.clickRemoveAllButton);
+        this.el.on('click', '.menu-button', this.clickMenuButton);
+        this.el.on('click', '.browser-button', this.clickBrowserButton);
+
+        $("#my-menu").mmenu({
+            // options object
+            classes: "mm-slide"
+        }, {
+            // configuration object
+            pageNodetype: "script",
+            listClass: "buttons"
+        });
 	};
 
 	this.render = function() {
@@ -21,6 +32,16 @@ var HomeView = function (adapter, homePage, listItem) {
 	};
 
     /* ---------------------------------- Button Listeners ---------------------------------- */
+
+    this.clickMenuButton = function() {
+        $("#my-menu").trigger("open");
+        //switch scroller to inherit, then upon closing the menu, it switches back to absolute
+        $(".scroller").css("position", "inherit");
+    }
+
+    this.clickBrowserButton = function() {
+        window.open("http://www.google.co.uk",'_blank');
+    }
 
     this.clickRemoveAllButton = function() {
         adapter.removeAllProducts();

@@ -7,6 +7,7 @@
 
 .top-bar {
     padding:10px 10px 12px 12px;
+    background-color: #FAFAFA;
 }
 
 .top-bar > input {
@@ -34,6 +35,19 @@
 
 .icon-add-button {
     background: url("../topcoat/img/add-button.png") no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+}
+
+.browser-button {
+    float: left;
+    bottom:6px;
+    right: 15px;
+}
+
+.icon-browser-button {
+    background: url("../topcoat/img/browser-icon.png") no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -78,6 +92,20 @@
 
 .icon-refresh-button {
     background: url("../topcoat/img/reload-icon.png") no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    position: relative;
+}
+
+.menu-button {
+    top: 6px;
+    bottom:10px;
+    right: 15px;
+}
+
+.icon-menu-button {
+    background: url("../topcoat/img/menu-icon.png") no-repeat;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -322,5 +350,7 @@ a {
 
 #update-progress {
     font-size: 0.7rem;
-    align-content: left;
+}
+
+#homepage {
 }
