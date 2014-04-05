@@ -85,8 +85,6 @@
 }
 
 .refresh-button {
-    top: 6px;
-    bottom:10px;
     right: 15px;
 }
 
@@ -352,5 +350,6 @@ a {
     font-size: 0.7rem;
 }
 
-#homepage {
+#last-updated-text-page-one {
+    vertical-align: middle;
 }
